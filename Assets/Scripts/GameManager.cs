@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
         // 데이터 불러오기
         _trashCount.trashTouchCount = PlayerPrefs.GetInt("trashTouchCount");
+        PlayerPrefs.SetInt("trashCurrentCount", 5);     //!재로드될 쓰레기 양 유지하기 위한 장치 (작품 완성시 지우기)
         _trashCount.trashCurrentCount = PlayerPrefs.GetInt("trashCurrentCount");
         playDay = PlayerPrefs.GetInt("playDay");
         // animalCount = PlayerPrefs.GetInt("animalCount");

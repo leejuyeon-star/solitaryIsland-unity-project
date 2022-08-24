@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2417420211912151310}
   - component: {fileID: 2417420211912151311}
   - component: {fileID: 2417420211912151307}
-  - component: {fileID: 7668219449364639767}
+  - component: {fileID: -5454825409801913291}
   m_Layer: 0
   m_Name: trashBag
   m_TagString: Untagged
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 50
   moveDirection: {x: 0, y: 0, z: 0}
---- !u!114 &7668219449364639767
+--- !u!114 &-5454825409801913291
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,10 +140,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2417420211320679142}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e648ea718be89984bb7588615172d0f1, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e6eaf29169c9974cade13f26514d427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectCount: 10
+  objectCount: 0
   obj:
   - {fileID: 140520, guid: dd9608af606942d40866ed841b2910bd, type: 3}
   - {fileID: 5329458996146142990, guid: a730ded43acb92740a48eb9e30794dc0, type: 3}
@@ -158,4 +158,4 @@ MonoBehaviour:
   objCreateCount: 3
   exploder: {fileID: 2840991594784782998, guid: fbefc46f268a7a342aa5ec0521ce49d8, type: 3}
   waitingTime: 5
-  background: {fileID: 383325983470591415, guid: 4c2ca3dd6f2c1a84693f486e025e6d92, type: 3}
+  parentGroup: {fileID: 0}

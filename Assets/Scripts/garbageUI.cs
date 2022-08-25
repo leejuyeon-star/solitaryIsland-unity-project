@@ -27,7 +27,6 @@ public class garbageUI : MonoBehaviour
 
         //오브젝트 삭제
         ObjectPooling.Instance.DeactivatePoolItem(hitObject);
-        // Destroy(hitObject);
     }
 
     public void printUI()

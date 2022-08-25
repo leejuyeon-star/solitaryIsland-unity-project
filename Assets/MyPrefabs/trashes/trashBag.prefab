@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e6eaf29169c9974cade13f26514d427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectCount: 0
+  objectCount: 10
   obj:
   - {fileID: 140520, guid: dd9608af606942d40866ed841b2910bd, type: 3}
   - {fileID: 5329458996146142990, guid: a730ded43acb92740a48eb9e30794dc0, type: 3}
@@ -158,4 +158,3 @@ MonoBehaviour:
   objCreateCount: 3
   exploder: {fileID: 2840991594784782998, guid: fbefc46f268a7a342aa5ec0521ce49d8, type: 3}
   waitingTime: 5
-  parentGroup: {fileID: 0}

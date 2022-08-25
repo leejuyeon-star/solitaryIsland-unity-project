@@ -9,6 +9,7 @@ public class ObjectPooling : MonoBehaviour
     public GameObject trashBagPrefab;         //쓰레기봉투
     public GameObject exploder;               //exploder
     public GameObject[] garbagePrefab;        //쓰레기들
+    
 
     public GameObject trashBagParent;       //쓰레기봉투가 상속될 그룹
     public GameObject exploderParent;       // exploder가 상속될 그룹
@@ -32,8 +33,6 @@ public class ObjectPooling : MonoBehaviour
     private Queue<GameObject> garbageQueue9 = new Queue<GameObject>();  //쓰레기 큐
 
     
-
-
     private void Awake()
     {
         Instance = this;
@@ -64,15 +63,20 @@ public class ObjectPooling : MonoBehaviour
     private void InstantiateObjects(GameObject obj)    
     {
         GameObject newObj;
+        int index;
         for(int i=0; i<increaseCount; i++)
         {
-            newObj = Instantiate(obj); //매개변수
+            newObj = Instantiate(obj); 
             newObj.SetActive(false);
             MappingParent(obj, newObj);
-            MappingQueue(obj).Enqueue(newObj);     //매개변수
+            index = newObj.name.IndexOf("(Clone)");
+            if (index > 0) 
+                newObj.name = newObj.name.Substring(0, index);
+            Instance.MappingQueue(obj).Enqueue(newObj);
         }
         return;
     }
+
 
     //오브젝트 활성화
     public GameObject ActivatePoolItem(GameObject obj)
@@ -81,7 +85,7 @@ public class ObjectPooling : MonoBehaviour
         {
             Instance.InstantiateObjects(obj);              
         }
-        GameObject gameobject = MappingQueue(obj).Dequeue();
+        GameObject gameobject = Instance.MappingQueue(obj).Dequeue();
         gameobject.SetActive(true);
         return gameobject;
     }
@@ -90,61 +94,62 @@ public class ObjectPooling : MonoBehaviour
     //오브젝트 비활성화
     public void DeactivatePoolItem(GameObject obj)
     {
+        Instance.MappingQueue(obj).Enqueue(obj);
         obj.SetActive(false);
-        MappingQueue(obj).Enqueue(obj);
         return;
     }
 
 
-    //오브젝트에 해당하는 큐를 매핑
+    //!!!!오브젝트에 해당하는 큐를 매핑 안된다!!!
     private Queue<GameObject> MappingQueue(GameObject obj)
     {
+        
         Queue<GameObject> ObjectQueue = new Queue<GameObject>();
-        if(obj == trashBagPrefab) 
+        if(obj.name == trashBagPrefab.name) 
         {
             ObjectQueue = trashBagQueue;
         }
-        else if (obj == exploder)
+        else if (obj.name == exploder.name)
         {
             ObjectQueue = exploderQueue;
         }
-        else if (obj == garbagePrefab[0])
+        else if (obj.name == garbagePrefab[0].name)
         {
             ObjectQueue = garbageQueue0;
         } 
-        else if (obj == garbagePrefab[1])
+        else if (obj.name == garbagePrefab[1].name)
         {
             ObjectQueue = garbageQueue1;
         }
-        else if (obj == garbagePrefab[2])
+        else if (obj.name == garbagePrefab[2].name)
         {
             ObjectQueue = garbageQueue2;
         }
-        else if (obj == garbagePrefab[3])
+        else if (obj.name == garbagePrefab[3].name)
         {
             ObjectQueue = garbageQueue3;
         }
-        else if (obj == garbagePrefab[4])
+        else if (obj.name == garbagePrefab[4].name)
         {
             ObjectQueue = garbageQueue4;
         }
-        else if (obj == garbagePrefab[5])
+        else if (obj.name == garbagePrefab[5].name)
         {
             ObjectQueue = garbageQueue5;
         }
-        else if (obj == garbagePrefab[6])
+        else if (obj.name == garbagePrefab[6].name)
         {
             ObjectQueue = garbageQueue6;
         }
-        else if (obj == garbagePrefab[7])
+        else if (obj.name == garbagePrefab[7].name)
         {
             ObjectQueue = garbageQueue7;
         }
-        else if (obj == garbagePrefab[8])
+        else if (obj.name == garbagePrefab[8].name)
         {
             ObjectQueue = garbageQueue8;
         }
-        else if (obj == garbagePrefab[9])
+        else if (obj.name == garbagePrefab[9].name)
         {
             ObjectQueue = garbageQueue9;
         }

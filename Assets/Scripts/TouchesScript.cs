@@ -42,12 +42,10 @@ public class TouchesScript : MonoBehaviour
         // 오브젝트 한손가락으로 터치시(드래그x) effect발생
         if (Input.touchCount == 1 && !touch) 
         {
-            Debug.Log("Touch!!");
             Vector2 screenPos = Input.GetTouch(0).position;
             var rayNow = Camera.ScreenPointToRay(screenPos);
             if (Physics.Raycast(rayNow, out hitInfo, MaxDistance, LayerMask))       //오브젝트 터치시 hitInfo에 해당 오브젝트의 정보 저장
             {
-                Debug.Log("Touch!");
                 //effect
                 // GameManager에게 해당 오브젝트를 터치했음을 알림
                 GameObject hitObject = hitInfo.transform.gameObject;

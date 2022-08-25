@@ -27,7 +27,6 @@ public class timeControl : MonoBehaviour
         if(realplayTime >= intervaltime){
             //playDay 데이터 갱신
             (GameManager.Instance.playDay)++;
-            Debug.Log("time > intervaltime");
             //ui 반영
             printUI();
             realplayTime = 0;

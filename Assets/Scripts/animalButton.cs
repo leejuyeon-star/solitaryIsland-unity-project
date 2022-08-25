@@ -14,5 +14,9 @@ public class animalButton : MonoBehaviour
         gameobject.SetActive(true);
         touchController.SetActive(false);
         ScrollAndPinch.SetActive(false);
+        
     }
+
+
 }
+

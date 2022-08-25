@@ -45,11 +45,11 @@ public class garbageSpawnExploder : MonoBehaviour
         //objCreateCount만큼의 양으로 랜덤한 물건의 오브젝트를 쓰레기봉투에서 생성
         for(int i=0; i<objCreateCount; i++)
         {
-            int CreateObject = Random.Range(0, objectCount);
+            int CreateObject = Random.Range(0, objectCount+1);
             GameObject clone = ObjectPooling.Instance.ActivatePoolItem(obj[CreateObject]);
             // GameObject clone = Instantiate(obj[CreateObject], spawnPosition, Quaternion.Euler(0,0,0));
             clone.transform.position = spawnPosition;   //
-            // clone.transform.localScale = new Vector3(100,100,100);   //?이게 왜 필요하지?
+            
             // //부모에 상속하기
             // inheritToParent(clone, spawnPosition);
         }
@@ -58,7 +58,7 @@ public class garbageSpawnExploder : MonoBehaviour
         GameObject exploderClone = ObjectPooling.Instance.ActivatePoolItem(exploder);
         exploderClone.transform.position = spawnPosition;
         // GameObject exploderClone = Instantiate(exploder, spawnPosition, Quaternion.Euler(0,0,0));
-        // //!부모에 상속하기       (오브젝트 풀링 후에 하기)
+        // //부모에 상속하기       (오브젝트 풀링 후에 하기)
         // inheritToParent(exploderClone, spawnPosition);
     }
 

@@ -15,14 +15,11 @@ public class trashBagSpawner : MonoBehaviour
     private float timer;
     public int waitingTime = 10;
 
-    private int objectCount;
     private int objCreateCount;         //실제 생성할될오브젝트 양
     Vector3 spawnPosition;               //스폰될 장소
 
     public GameObject alarmTxt;
     private TextMeshProUGUI alarmUITxt;
-
-    public GameObject parentGroup;      //쓰레기봉투가 상속될 부모 오브젝트
 
     public GameObject AnimatorObj;      //애니메이터가 포함된 오브젝트
     private Animator animator;
@@ -41,7 +38,6 @@ public class trashBagSpawner : MonoBehaviour
         alarmUITxt = alarmTxt.GetComponent<TextMeshProUGUI>();
         animator = AnimatorObj.GetComponent<Animator>();
         animator.SetBool("alarmOn", false);
-        // objectPool = new ObjectPool();
     }
     
     private void Update()
@@ -51,7 +47,7 @@ public class trashBagSpawner : MonoBehaviour
         {
             //Action
             printUI();      //UI에 띄우기
-            InstantiateTrash();     // 쓰레기봉투 생성
+            InstantiateTrashbag();     // 쓰레기봉투 생성
             timer = 0;
         }
     }
@@ -75,16 +71,12 @@ public class trashBagSpawner : MonoBehaviour
 
 
     //쓰레기 봉투 생성하기
-    private void InstantiateTrash()
+    private void InstantiateTrashbag()
     {
-        spawnPosition = transform.position;
+        // spawnPosition = transform.position;
         objCreateCount = Random.Range(1, objCreateMax);
         for(int i=0; i<objCreateCount; i++){
-            GameObject clone = ObjectPooling.Instance.ActivatePoolItem(obj);
-            // (obj[0], spawnPosition,Quaternion.Euler(0,0,0))
-            //부모에 상속하기
-            // clone.transform.parent = parentGroup.transform;
-            clone.transform.localPosition = spawnPosition;
+            GameObject clone = ObjectPooling.Instance.ActivatePoolItem(obj, new Vector3(0,0,0));
         }
     }
 
@@ -92,3 +84,23 @@ public class trashBagSpawner : MonoBehaviour
 
 
 }
+
+
+
+    
+
+	// // const string INFO = "풀링한 오브젝트에 다음을 적으세요 
+    // void OnDisable()
+    // {
+    //     ObjectPooler.ReturnToPool(gameObject);    // 한 객체에 한번만 
+        
+	// 	// CancelInvoke();    // Monobehaviour에 Invoke가 있다면 
+    // };
+
+    // public static void ReturnToPool(GameObject obj)
+	// {
+	// 	if (!inst.poolDictionary.ContainsKey(obj.name))
+	// 		throw new Exception($"Pool with tag {obj.name} doesn't exist.");
+
+	// 	inst.poolDictionary[obj.name].Enqueue(obj);
+	// }

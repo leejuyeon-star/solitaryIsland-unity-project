@@ -3,25 +3,37 @@ using System.Collections.Generic;
 using System.Collections;
 
 public class Exploder : MonoBehaviour {
-
 	public float explosionTime = 0;
+	private float _explosionTime;
 	public float randomizeExplosionTime = 0;
+	private float _randomizeExplosionTime;
 	public float radius = 15;
+	private float _radius;
 	public float power = 1;
+	private float _power;
 	public int probeCount = 150;
+	private int _probeCount;
 	public float explodeDuration = 0.5f;
+	private float _explodeDuration;
 
 	protected bool exploded = false;
+	protected bool _exploded;
 
-	int waitingTime = 2;
-	float timer = 0.0f;
+	private int waitingTime = 2;
+	private int _waitingTime;
+	private float timer = 0.0f;
+	private float _timer;
+
+
+
 
 	void Update()
     {
-		timer += Time.deltaTime;       
-        if(timer > waitingTime)  //쓰레기봉투가 생성된 시점부터 waitingTime 이후 실행
+		_timer += Time.deltaTime;       
+        if(_timer > _waitingTime)  //쓰레기봉투가 생성된 시점부터 waitingTime 이후 실행
         {
-			Destroy(gameObject);
+			//오브젝트 삭제
+			ObjectPooling.Instance.DeactivatePoolItem(gameObject);
 		}
 	}
 
@@ -35,9 +47,9 @@ public class Exploder : MonoBehaviour {
 			}
 		}		
 		while(true){		//계속 폭파..
-		// while (explodeDuration > Time.time - explosionTime) {
+		// while (_explodeDuration > Time.time - _explosionTime) {
 			disableCollider();
-			for (int i = 0; i < probeCount; i++) {
+			for (int i = 0; i < _probeCount; i++) {
 				shootFromCurrentPosition();
 			}
 			enableCollider();
@@ -48,7 +60,7 @@ public class Exploder : MonoBehaviour {
 	protected virtual void shootFromCurrentPosition() {
 		Vector3 probeDir = Random.onUnitSphere;
 		Ray testRay = new Ray(transform.position, probeDir);
-		shootRay(testRay, radius);
+		shootRay(testRay, _radius);
 	}
 
 	protected bool wasTrigger;
@@ -67,20 +79,29 @@ public class Exploder : MonoBehaviour {
 
 	
 	protected virtual void init() {
-		power *= 500000;
+		_power *= 500000;
 		
-		if (randomizeExplosionTime > 0.01f) {
-			explosionTime += Random.Range(0.0f, randomizeExplosionTime);
+		if (_randomizeExplosionTime > 0.01f) {
+			_explosionTime += Random.Range(0.0f, _randomizeExplosionTime);
 		}
 	}
 
-	void Awake() {
+	void OnEnable() {
+		_explosionTime = explosionTime;
+		_randomizeExplosionTime = randomizeExplosionTime;
+		_radius = radius;
+		_power = power;
+		_probeCount = probeCount;
+		_explodeDuration = explodeDuration;
+		_exploded = exploded;
+		_waitingTime = waitingTime;
+		_timer = timer;
 		init();
 	}
 
 	void FixedUpdate() {
-		if (Time.time > explosionTime && !exploded) {
-			exploded = true;
+		if (Time.time > _explosionTime && !_exploded) {
+			_exploded = true;
 			StartCoroutine("explode");
 		}
 	}
@@ -89,7 +110,7 @@ public class Exploder : MonoBehaviour {
 		RaycastHit hit;
 		if (Physics.Raycast(testRay, out hit, estimatedRadius)) {
 			if (hit.rigidbody != null) {
-				hit.rigidbody.AddForceAtPosition(power * Time.deltaTime * testRay.direction / probeCount, hit.point);
+				hit.rigidbody.AddForceAtPosition(_power * Time.deltaTime * testRay.direction / _probeCount, hit.point);
 				estimatedRadius /= 2;
 			} else {
 				Vector3 reflectVec = Random.onUnitSphere;

@@ -18,13 +18,12 @@ public class TouchesScript : MonoBehaviour
 {
     public Camera Camera;
     public LayerMask LayerMask;     //충돌 감지할 레이어
-    public GameObject _garbageUI;
 
 
 #if UNITY_IOS || UNITY_ANDROID
 
     RaycastHit hitInfo;
-    float MaxDistance = Mathf.Infinity;    //?카메라 ~ 오브젝트의 최대 거리(이거 설정해놓으면 오류 많이 날텐데)
+    float MaxDistance = Mathf.Infinity;  
     protected Plane Plane;
     bool touch = false;
 
@@ -49,7 +48,7 @@ public class TouchesScript : MonoBehaviour
                 //effect
                 // GameManager에게 해당 오브젝트를 터치했음을 알림
                 GameObject hitObject = hitInfo.transform.gameObject;
-                _garbageUI.GetComponent<garbageUI>().isTouch(hitObject);
+                GetComponent<garbageTouchEffect>().TouchEffect(hitObject);
                 
             }
             touch = true;

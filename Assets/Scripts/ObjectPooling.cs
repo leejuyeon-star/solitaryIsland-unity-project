@@ -39,7 +39,7 @@ public class ObjectPooling : MonoBehaviour
         FirstInstantiateObjects();
     }
 
-    //처음 awake시 모든 오브젝트를 inistiate 해놓기
+    //처음 실행시 모든 오브젝트를 inistiate 하는 함수
     private void FirstInstantiateObjects() 
     {
         InstantiateObjects(trashBagPrefab);
@@ -59,8 +59,8 @@ public class ObjectPooling : MonoBehaviour
 
     
 
-    //오브젝트 instantiate, 큐에 저장
-    private void InstantiateObjects(GameObject obj)    
+    //오브젝트 instantiate, 큐에 저장하는 함수
+    private void InstantiateObjects(in GameObject obj)    
     {
         GameObject newObj;
         int index;
@@ -78,21 +78,22 @@ public class ObjectPooling : MonoBehaviour
     }
 
 
-    //오브젝트 활성화
-    public GameObject ActivatePoolItem(GameObject obj)
+    //오브젝트 활성화하고 위치 설정하여 리턴
+    public GameObject ActivatePoolItem(in GameObject prefab, in Vector3 spawnPosition)
     {
-        if(Instance.MappingQueue(obj).Count <= 0)      
+        if(Instance.MappingQueue(prefab).Count <= 0)      
         {
-            Instance.InstantiateObjects(obj);              
+            Instance.InstantiateObjects(prefab);              
         }
-        GameObject gameobject = Instance.MappingQueue(obj).Dequeue();
+        GameObject gameobject = Instance.MappingQueue(prefab).Dequeue();
         gameobject.SetActive(true);
+        gameobject.transform.localPosition = spawnPosition;
         return gameobject;
     }
 
 
-    //오브젝트 비활성화
-    public void DeactivatePoolItem(GameObject obj)
+    //오브젝트 비활성화하는 함수
+    public void DeactivatePoolItem(in GameObject obj)
     {
         Instance.MappingQueue(obj).Enqueue(obj);
         obj.SetActive(false);
@@ -100,56 +101,56 @@ public class ObjectPooling : MonoBehaviour
     }
 
 
-    //!!!!오브젝트에 해당하는 큐를 매핑 안된다!!!
-    private Queue<GameObject> MappingQueue(GameObject obj)
+    //오브젝트 이름에 맞는 큐 반환
+    private Queue<GameObject> MappingQueue(in GameObject prefab)
     {
         
         Queue<GameObject> ObjectQueue = new Queue<GameObject>();
-        if(obj.name == trashBagPrefab.name) 
+        if(prefab.name == trashBagPrefab.name) 
         {
             ObjectQueue = trashBagQueue;
         }
-        else if (obj.name == exploder.name)
+        else if (prefab.name == exploder.name)
         {
             ObjectQueue = exploderQueue;
         }
-        else if (obj.name == garbagePrefab[0].name)
+        else if (prefab.name == garbagePrefab[0].name)
         {
             ObjectQueue = garbageQueue0;
         } 
-        else if (obj.name == garbagePrefab[1].name)
+        else if (prefab.name == garbagePrefab[1].name)
         {
             ObjectQueue = garbageQueue1;
         }
-        else if (obj.name == garbagePrefab[2].name)
+        else if (prefab.name == garbagePrefab[2].name)
         {
             ObjectQueue = garbageQueue2;
         }
-        else if (obj.name == garbagePrefab[3].name)
+        else if (prefab.name == garbagePrefab[3].name)
         {
             ObjectQueue = garbageQueue3;
         }
-        else if (obj.name == garbagePrefab[4].name)
+        else if (prefab.name == garbagePrefab[4].name)
         {
             ObjectQueue = garbageQueue4;
         }
-        else if (obj.name == garbagePrefab[5].name)
+        else if (prefab.name == garbagePrefab[5].name)
         {
             ObjectQueue = garbageQueue5;
         }
-        else if (obj.name == garbagePrefab[6].name)
+        else if (prefab.name == garbagePrefab[6].name)
         {
             ObjectQueue = garbageQueue6;
         }
-        else if (obj.name == garbagePrefab[7].name)
+        else if (prefab.name == garbagePrefab[7].name)
         {
             ObjectQueue = garbageQueue7;
         }
-        else if (obj.name == garbagePrefab[8].name)
+        else if (prefab.name == garbagePrefab[8].name)
         {
             ObjectQueue = garbageQueue8;
         }
-        else if (obj.name == garbagePrefab[9].name)
+        else if (prefab.name == garbagePrefab[9].name)
         {
             ObjectQueue = garbageQueue9;
         }
@@ -162,14 +163,14 @@ public class ObjectPooling : MonoBehaviour
 
 
     //오브젝트가 상속될 부모 매핑
-    private void MappingParent(GameObject obj, GameObject newObj)
+    private void MappingParent(in GameObject prefab, in GameObject newObj)
     {
         GameObject objectParent;
-        if(obj == trashBagPrefab) 
+        if(prefab == trashBagPrefab) 
         {
             objectParent = trashBagParent;
         }
-        else if (obj == exploder)
+        else if (prefab == exploder)
         {
             objectParent = exploderParent;
         }
@@ -178,7 +179,6 @@ public class ObjectPooling : MonoBehaviour
             objectParent = garbageParent;
         }
         newObj.transform.parent = objectParent.transform;
-        // obj.transform.localPosition = spawnPosition;
         return;
     }
 

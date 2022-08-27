@@ -428,7 +428,6 @@ GameObject:
   - component: {fileID: 23418680309065412}
   - component: {fileID: -382964576855963083}
   - component: {fileID: 3451077797691907220}
-  - component: {fileID: 4091077566184289155}
   m_Layer: 0
   m_Name: bear
   m_TagString: Untagged
@@ -536,23 +535,3 @@ CapsuleCollider:
   m_Height: 3.5633638
   m_Direction: 1
   m_Center: {x: 0, y: 4.391661, z: 0}
---- !u!95 &4091077566184289155
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1583049149487350}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 74b19671031112a4a938f4ce9f8a3d0e, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0

@@ -16,20 +16,18 @@ public class GameManager : MonoBehaviour
     public trashCount _trashCount;
 
     public int playDay;     //날짜
-    public int animalCount0;  //동물 수
-    public int animalCount1;  //동물 수
-    public int animalCount2;  //동물 수
-    public int animalCount3;  //동물 수
-    public int animalCount4;  //동물 수
-    public int animalCount5;  //동물 수
-    public int animalCount6;  //동물 수
-    public int animalCount7;  //동물 수
-    public int animalCount8;  //동물 수
-    public int animalCount9;  //동물 수
+    private int animalCountSum; //모든 동물 수
+    private int animalCount0;  //동물 수
+    private int animalCount1;  //동물 수
+    private int animalCount2;  //동물 수
+    private int animalCount3;  //동물 수
+    private int animalCount4;  //동물 수
+    private int animalCount5;  //동물 수
+    private int animalCount6;  //동물 수
+    private int animalCount7;  //동물 수
+    private int animalCount8;  //동물 수
+    private int animalCount9;  //동물 수
 
-
-
-    public GameObject _garbageUI;
 
 
     private void Awake() 
@@ -47,6 +45,7 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("animalCount7", 1);          //!로드될 동물 수 유지하기 위한 장치 (작품 완성시 지우기)
         PlayerPrefs.SetInt("animalCount8", 1);          //!로드될 동물 수 유지하기 위한 장치 (작품 완성시 지우기)
         PlayerPrefs.SetInt("animalCount9", 1);          //!로드될 동물 수 유지하기 위한 장치 (작품 완성시 지우기)
+        PlayerPrefs.SetInt("animalCountSum", 10);
 
         // 데이터 불러오기
         _trashCount.trashTouchCount = PlayerPrefs.GetInt("trashTouchCount");
@@ -62,6 +61,7 @@ public class GameManager : MonoBehaviour
         animalCount7 = PlayerPrefs.GetInt("animalCount7");
         animalCount8 = PlayerPrefs.GetInt("animalCount8");
         animalCount9 = PlayerPrefs.GetInt("animalCount9");
+        animalCountSum = PlayerPrefs.GetInt("animalCountSum");
     }
 
 
@@ -82,13 +82,7 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("animalCount7", animalCount7);
         PlayerPrefs.SetInt("animalCount8", animalCount8);
         PlayerPrefs.SetInt("animalCount9", animalCount9);
-    }
-
-
-    public void printgarbageUI()
-    {
-        _garbageUI.GetComponent<garbageUI>().printUI();
-        return;
+        PlayerPrefs.SetInt("animalCountSum", animalCountSum);
     }
 
 
@@ -142,6 +136,25 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    
+    public void PlusAnimalCount(GameObject Obj)
+    {
+        MappingAnimalCount(Obj)++;
+        animalCountSum++;
+        return;
+    }
+
+    public void MinusAnimalCount(GameObject Obj)
+    {
+        MappingAnimalCount(Obj)--;
+        animalCountSum--;
+        return;
+    }
+
+    public int GetAnimalCountSum()
+    {
+        return animalCountSum;
+    }
     
 
 }

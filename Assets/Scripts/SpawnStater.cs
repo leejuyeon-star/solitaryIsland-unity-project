@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 처음실행시 로드된 양만큼 오브젝트들 생성
 public class SpawnStater : MonoBehaviour
 {
     public int objectCount;            //오브젝트 개수
@@ -10,11 +11,11 @@ public class SpawnStater : MonoBehaviour
 
     public GameObject animalParent;         //동물이 상속될 부모 오브젝트
 
-    private float range_X = 250;        //랜덤으로 스폰될 장소 범위 x축
-    private float range_Z = 250;        //랜덤으로 스폰될 장소 범위 z축
+    public float range_X = 250f;        //랜덤으로 스폰될 장소 범위 x축
+    public float range_Z = 250f;        //랜덤으로 스폰될 장소 범위 z축
+    public float _Y = 100f;
 
 
-    //쓰레기 수 로드하여 랜덤한 종류로 랜덤한 곳에 뿌리기
     private void Awake()
     {
         SpawnGarbage();
@@ -26,12 +27,10 @@ public class SpawnStater : MonoBehaviour
     private void SpawnGarbage()
     {
         int _trashCurrentCount = GameManager.Instance._trashCount.trashCurrentCount;
-        //로드한 만큼의 양으로 랜덤한 물건의 오브젝트를 생성
         for(int i=0; i<_trashCurrentCount; i++)
         {
             int CreateObject = Random.Range(0, objectCount);
-            GameObject clone = ObjectPooling.Instance.ActivatePoolItem(garbagePrefab[CreateObject]);
-            clone.transform.position = RandomPosition();
+            GameObject clone = ObjectPooling.Instance.ActivatePoolItem(garbagePrefab[CreateObject], ReturnRandomPosition(range_X, _Y, range_Z));
             clone.transform.localScale = new Vector3(100,100,100);
         }
     }
@@ -46,8 +45,8 @@ public class SpawnStater : MonoBehaviour
             {
                 int index;
                 GameObject newObj = Instantiate(animalPrefab[i]); 
-                newObj.transform.position = RandomPosition();
                 newObj.transform.parent = animalParent.transform;
+                newObj.transform.localPosition = ReturnRandomPosition(range_X, _Y, range_Z);
                 newObj.transform.localScale = new Vector3(10,10,10);
                 index = newObj.name.IndexOf("(Clone)");
                 if (index > 0) 
@@ -57,24 +56,12 @@ public class SpawnStater : MonoBehaviour
     }
     
 
-    //랜덤한 장소 선택
-    private Vector3 RandomPosition()
+    // Vector3(0 ~ range_X, _Y, 0 ~ range_Z) 범위 내에서 랜덤한 위치 반환 
+    private Vector3 ReturnRandomPosition(float range_X, float _Y, float range_Z)
     {
         range_X = Random.Range((range_X) * -1, range_X);
         range_Z = Random.Range((range_Z) * -1, range_Z);
-        Vector3 RandomPostion = new Vector3(range_X, 100f, range_Z);
-        // Vector3 respawnPosition = originPosition + RandomPostion;
-        Vector3 respawnPosition = RandomPostion;
-        return respawnPosition;
+        Vector3 RandomPostion = new Vector3(range_X, _Y, range_Z);
+        return RandomPostion;
     }
-
-
-    // // 부모에 상속하기
-    // private void inheritToParent(GameObject gameobject, Vector3 spawnPosition)
-    // {
-    //     gameobject.transform.parent = parentGroup.transform;
-    //     gameobject.transform.localPosition = spawnPosition;
-    //     return;
-    // }
-
 }

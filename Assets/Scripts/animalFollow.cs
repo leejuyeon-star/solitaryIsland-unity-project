@@ -18,6 +18,10 @@ public class animalFollow : MonoBehaviour
         transform.position = target + offset;
     }
 
+    // public IEnumerator SendObject(GameObject obj)
+    // {
+    //     target = obj.transform.position;
+    // }
     public void SendObject(GameObject obj)
     {
         target = obj.transform.position;

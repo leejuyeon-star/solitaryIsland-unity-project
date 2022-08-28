@@ -155,8 +155,8 @@ Transform:
   - {fileID: 282591174}
   - {fileID: 771830841}
   - {fileID: 409813048}
-  - {fileID: 1105894832}
   - {fileID: 628708207}
+  - {fileID: 2027757720}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1131,7 +1131,9 @@ Transform:
   m_LocalPosition: {x: 532.72455, y: 1213.4674, z: -894.9099}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 926829432}
+  - {fileID: 1745421668}
   m_Father: {fileID: 18130030}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1148,6 +1150,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playDay: 0
+  Mainbgm: {fileID: 926829433}
+  sfxMusic:
+  - {fileID: 1745421669}
 --- !u!1 &415350863
 GameObject:
   m_ObjectHideFlags: 0
@@ -1611,7 +1616,6 @@ GameObject:
   - component: {fileID: 492702975}
   - component: {fileID: 492702974}
   - component: {fileID: 492702973}
-  - component: {fileID: 492702976}
   m_Layer: 5
   m_Name: itemButton (3)
   m_TagString: Untagged
@@ -1684,7 +1688,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 492702976}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AnimalClickSpawner, Assembly-CSharp
         m_MethodName: OnClickButton
         m_Mode: 1
@@ -1734,27 +1738,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 492702971}
   m_CullTransparentMesh: 1
---- !u!114 &492702976
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 492702971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f80efeea27f09b4b845a8c06feb2ec3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animalPrefab: {fileID: 1939047327135358, guid: 9bf0461342466fb49aa1f3bdd8abaf9a, type: 3}
-  AnimalParent: {fileID: 875905247}
-  spawnPosition: {x: 0, y: 0, z: 0}
-  _NoPointAlarm: {fileID: 279240276}
-  animalPoint: 30
-  AnimalSpawnCamera: {fileID: 569474736}
-  InGamePanel: {fileID: 1842557321}
-  AnimalSpawnPanel: {fileID: 426201062}
-  InventoryPanel: {fileID: 1199407978}
 --- !u!1 &522705999
 GameObject:
   m_ObjectHideFlags: 0
@@ -1820,7 +1803,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 569474736}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &569474738
 Camera:
   m_ObjectHideFlags: 0
@@ -1980,7 +1963,6 @@ GameObject:
   - component: {fileID: 621629375}
   - component: {fileID: 621629374}
   - component: {fileID: 621629373}
-  - component: {fileID: 621629376}
   m_Layer: 5
   m_Name: itemButton (1)
   m_TagString: Untagged
@@ -2053,7 +2035,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 621629376}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AnimalClickSpawner, Assembly-CSharp
         m_MethodName: OnClickButton
         m_Mode: 1
@@ -2103,27 +2085,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 621629371}
   m_CullTransparentMesh: 1
---- !u!114 &621629376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 621629371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f80efeea27f09b4b845a8c06feb2ec3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animalPrefab: {fileID: 1795829677563072, guid: 036bda6ec43191447a9505b18937c866, type: 3}
-  AnimalParent: {fileID: 875905247}
-  spawnPosition: {x: 0, y: 100, z: 0}
-  _NoPointAlarm: {fileID: 279240276}
-  animalPoint: 20
-  AnimalSpawnCamera: {fileID: 569474736}
-  InGamePanel: {fileID: 1842557321}
-  AnimalSpawnPanel: {fileID: 426201062}
-  InventoryPanel: {fileID: 1199407978}
 --- !u!1 &628708206
 GameObject:
   m_ObjectHideFlags: 0
@@ -2154,7 +2115,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 18130030}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &628708208
 MonoBehaviour:
@@ -2614,7 +2575,6 @@ GameObject:
   - component: {fileID: 809785363}
   - component: {fileID: 809785362}
   - component: {fileID: 809785361}
-  - component: {fileID: 809785364}
   m_Layer: 5
   m_Name: itemButton (5)
   m_TagString: Untagged
@@ -2687,7 +2647,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 809785364}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AnimalClickSpawner, Assembly-CSharp
         m_MethodName: OnClickButton
         m_Mode: 1
@@ -2737,27 +2697,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 809785359}
   m_CullTransparentMesh: 1
---- !u!114 &809785364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 809785359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f80efeea27f09b4b845a8c06feb2ec3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animalPrefab: {fileID: 1541574519402986, guid: 099f2661fe3bd1742aa1adb849613c6a, type: 3}
-  AnimalParent: {fileID: 875905247}
-  spawnPosition: {x: 0, y: 0, z: 0}
-  _NoPointAlarm: {fileID: 279240276}
-  animalPoint: 50
-  AnimalSpawnCamera: {fileID: 569474736}
-  InGamePanel: {fileID: 1842557321}
-  AnimalSpawnPanel: {fileID: 426201062}
-  InventoryPanel: {fileID: 0}
 --- !u!1 &810120010
 GameObject:
   m_ObjectHideFlags: 0
@@ -3381,6 +3320,134 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 896861093}
   m_CullTransparentMesh: 1
+--- !u!1 &926829431
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 926829432}
+  - component: {fileID: 926829433}
+  m_Layer: 0
+  m_Name: MainBGM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &926829432
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 926829431}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 409813048}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &926829433
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 926829431}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 5a4896eaf56f67b4a84464cd32dce5a9, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &944101480
 GameObject:
   m_ObjectHideFlags: 0
@@ -3882,74 +3949,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1105894831
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1105894832}
-  - component: {fileID: 1105894833}
-  m_Layer: 0
-  m_Name: SpawnStartController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1105894832
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1105894831}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -468, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 18130030}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1105894833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1105894831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 835cf86ea262c7e48acb391963fb705d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectCount: 3
-  garbagePrefab:
-  - {fileID: 140520, guid: dd9608af606942d40866ed841b2910bd, type: 3}
-  - {fileID: 5329458996146142990, guid: a730ded43acb92740a48eb9e30794dc0, type: 3}
-  - {fileID: 433358354945054939, guid: fade50cf12ac08647b0f860fb508ea73, type: 3}
-  - {fileID: 103030, guid: 8b342121ff2be5a45b964062c2ec412f, type: 3}
-  - {fileID: 102526, guid: 3667125f3eed893459ad620dfedcca53, type: 3}
-  - {fileID: 159330, guid: 18c7f6b8eb5793f49a8f6d81d2e01b43, type: 3}
-  - {fileID: 3854580023973963060, guid: fe6e1d39352d70647892c440f660ba75, type: 3}
-  - {fileID: 129966, guid: 44d893618ee70db4fbea9c13f14a89fb, type: 3}
-  - {fileID: 3889447483316223439, guid: 94dd57177f9e44140afa469b7d8b8070, type: 3}
-  - {fileID: 3878419794251599393, guid: b60098ff6b33b954ab7d5c447e7e9f21, type: 3}
-  animalPrefab:
-  - {fileID: 1583049149487350, guid: 66f13bbfba69a3247bf51329f729329a, type: 3}
-  - {fileID: 1795829677563072, guid: 036bda6ec43191447a9505b18937c866, type: 3}
-  - {fileID: 1614689655745524, guid: 62aff7e975d66604aaa12fa3a36b8c46, type: 3}
-  - {fileID: 1939047327135358, guid: 9bf0461342466fb49aa1f3bdd8abaf9a, type: 3}
-  - {fileID: 1887869030812482, guid: 1a1a69e60572d86489a68fe6907990be, type: 3}
-  - {fileID: 1541574519402986, guid: 099f2661fe3bd1742aa1adb849613c6a, type: 3}
-  - {fileID: 1743782891523012, guid: e69bc264bc15fc8418cedb7e6515ea53, type: 3}
-  animalParent: {fileID: 875905247}
-  range_X: 250
-  range_Z: 250
-  _Y: 100
 --- !u!1 &1155784036
 GameObject:
   m_ObjectHideFlags: 0
@@ -4251,7 +4250,6 @@ GameObject:
   - component: {fileID: 1189466120}
   - component: {fileID: 1189466119}
   - component: {fileID: 1189466118}
-  - component: {fileID: 1189466121}
   m_Layer: 5
   m_Name: itemButton
   m_TagString: Untagged
@@ -4324,7 +4322,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1189466121}
+      - m_Target: {fileID: 2027757721}
         m_TargetAssemblyTypeName: AnimalClickSpawner, Assembly-CSharp
         m_MethodName: OnClickButton
         m_Mode: 1
@@ -4374,27 +4372,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1189466116}
   m_CullTransparentMesh: 1
---- !u!114 &1189466121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1189466116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f80efeea27f09b4b845a8c06feb2ec3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animalPrefab: {fileID: 1583049149487350, guid: 66f13bbfba69a3247bf51329f729329a, type: 3}
-  AnimalParent: {fileID: 875905247}
-  spawnPosition: {x: 0, y: 100, z: 0}
-  _NoPointAlarm: {fileID: 279240276}
-  animalPoint: 1
-  AnimalSpawnCamera: {fileID: 569474736}
-  InGamePanel: {fileID: 1842557321}
-  AnimalSpawnPanel: {fileID: 426201062}
-  InventoryPanel: {fileID: 1199407978}
 --- !u!1 &1196855903
 GameObject:
   m_ObjectHideFlags: 0
@@ -4407,7 +4384,6 @@ GameObject:
   - component: {fileID: 1196855907}
   - component: {fileID: 1196855906}
   - component: {fileID: 1196855905}
-  - component: {fileID: 1196855908}
   m_Layer: 5
   m_Name: itemButton (2)
   m_TagString: Untagged
@@ -4480,7 +4456,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1196855908}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AnimalClickSpawner, Assembly-CSharp
         m_MethodName: OnClickButton
         m_Mode: 1
@@ -4530,27 +4506,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1196855903}
   m_CullTransparentMesh: 1
---- !u!114 &1196855908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1196855903}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f80efeea27f09b4b845a8c06feb2ec3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animalPrefab: {fileID: 1614689655745524, guid: 62aff7e975d66604aaa12fa3a36b8c46, type: 3}
-  AnimalParent: {fileID: 875905247}
-  spawnPosition: {x: 0, y: 100, z: 0}
-  _NoPointAlarm: {fileID: 279240276}
-  animalPoint: 20
-  AnimalSpawnCamera: {fileID: 569474736}
-  InGamePanel: {fileID: 1842557321}
-  AnimalSpawnPanel: {fileID: 426201062}
-  InventoryPanel: {fileID: 1199407978}
 --- !u!1 &1199407978
 GameObject:
   m_ObjectHideFlags: 0
@@ -5199,7 +5154,6 @@ GameObject:
   - component: {fileID: 1473517463}
   - component: {fileID: 1473517462}
   - component: {fileID: 1473517461}
-  - component: {fileID: 1473517464}
   m_Layer: 5
   m_Name: itemButton (4)
   m_TagString: Untagged
@@ -5272,7 +5226,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1473517464}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AnimalClickSpawner, Assembly-CSharp
         m_MethodName: OnClickButton
         m_Mode: 1
@@ -5322,27 +5276,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1473517459}
   m_CullTransparentMesh: 1
---- !u!114 &1473517464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473517459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f80efeea27f09b4b845a8c06feb2ec3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animalPrefab: {fileID: 1887869030812482, guid: 1a1a69e60572d86489a68fe6907990be, type: 3}
-  AnimalParent: {fileID: 875905247}
-  spawnPosition: {x: 0, y: 0, z: 0}
-  _NoPointAlarm: {fileID: 279240276}
-  animalPoint: 40
-  AnimalSpawnCamera: {fileID: 569474736}
-  InGamePanel: {fileID: 1842557321}
-  AnimalSpawnPanel: {fileID: 426201062}
-  InventoryPanel: {fileID: 1199407978}
 --- !u!1 &1488453766
 GameObject:
   m_ObjectHideFlags: 0
@@ -5950,6 +5883,134 @@ Transform:
   m_Father: {fileID: 9018464231645419698}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1745421667
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1745421668}
+  - component: {fileID: 1745421669}
+  m_Layer: 0
+  m_Name: SFX music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1745421668
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745421667}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 409813048}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1745421669
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745421667}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 7b55d9951269d8443ac4bfe22e018f17, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.3
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1820227361
 GameObject:
   m_ObjectHideFlags: 0
@@ -5962,7 +6023,6 @@ GameObject:
   - component: {fileID: 1820227365}
   - component: {fileID: 1820227364}
   - component: {fileID: 1820227363}
-  - component: {fileID: 1820227366}
   m_Layer: 5
   m_Name: itemButton (6)
   m_TagString: Untagged
@@ -6035,7 +6095,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1820227366}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AnimalClickSpawner, Assembly-CSharp
         m_MethodName: OnClickButton
         m_Mode: 1
@@ -6085,27 +6145,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1820227361}
   m_CullTransparentMesh: 1
---- !u!114 &1820227366
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1820227361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f80efeea27f09b4b845a8c06feb2ec3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animalPrefab: {fileID: 1743782891523012, guid: e69bc264bc15fc8418cedb7e6515ea53, type: 3}
-  AnimalParent: {fileID: 875905247}
-  spawnPosition: {x: 0, y: 0, z: 0}
-  _NoPointAlarm: {fileID: 279240276}
-  animalPoint: 60
-  AnimalSpawnCamera: {fileID: 569474736}
-  InGamePanel: {fileID: 1842557321}
-  AnimalSpawnPanel: {fileID: 426201062}
-  InventoryPanel: {fileID: 0}
 --- !u!1 &1842557321
 GameObject:
   m_ObjectHideFlags: 0
@@ -6414,6 +6453,83 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &2027757719
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2027757720}
+  - component: {fileID: 2027757721}
+  m_Layer: 0
+  m_Name: AnimalSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2027757720
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027757719}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -308.44232, y: -515.5471, z: 755.9075}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 18130030}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2027757721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027757719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f80efeea27f09b4b845a8c06feb2ec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpawnGroupNumber: 7
+  Spawn:
+  - animalPrefab: {fileID: 1583049149487350, guid: 66f13bbfba69a3247bf51329f729329a, type: 3}
+    animalPoint: 1
+    SpawnButton: {fileID: 1189466116}
+  - animalPrefab: {fileID: 1795829677563072, guid: 036bda6ec43191447a9505b18937c866, type: 3}
+    animalPoint: 5
+    SpawnButton: {fileID: 621629371}
+  - animalPrefab: {fileID: 1614689655745524, guid: 62aff7e975d66604aaa12fa3a36b8c46, type: 3}
+    animalPoint: 5
+    SpawnButton: {fileID: 1196855903}
+  - animalPrefab: {fileID: 1939047327135358, guid: 9bf0461342466fb49aa1f3bdd8abaf9a, type: 3}
+    animalPoint: 5
+    SpawnButton: {fileID: 492702971}
+  - animalPrefab: {fileID: 1887869030812482, guid: 1a1a69e60572d86489a68fe6907990be, type: 3}
+    animalPoint: 10
+    SpawnButton: {fileID: 1473517459}
+  - animalPrefab: {fileID: 1541574519402986, guid: 099f2661fe3bd1742aa1adb849613c6a, type: 3}
+    animalPoint: 10
+    SpawnButton: {fileID: 809785359}
+  - animalPrefab: {fileID: 1743782891523012, guid: e69bc264bc15fc8418cedb7e6515ea53, type: 3}
+    animalPoint: 10
+    SpawnButton: {fileID: 1820227361}
+  animalParent: {fileID: 875905247}
+  spawnPosition: {x: 0, y: 100, z: 0}
+  _NoPointAlarm: {fileID: 279240276}
+  AnimalSpawnCamera: {fileID: 569474736}
+  InGamePanel: {fileID: 1842557321}
+  AnimalSpawnPanel: {fileID: 426201062}
+  InventoryPanel: {fileID: 1199407978}
+  RandomSpawnRange_X: 250
+  RandomSpawnRange_Z: 250
+  SpawnRange_Y: 100
 --- !u!1 &2141122042
 GameObject:
   m_ObjectHideFlags: 0

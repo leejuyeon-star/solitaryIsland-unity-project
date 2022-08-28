@@ -28,6 +28,11 @@ public class GameManager : MonoBehaviour
     private int animalCount8;  //동물 수
     private int animalCount9;  //동물 수
 
+    public AudioSource Mainbgm;
+    public AudioSource[] sfxMusic;
+    public enum sfx {SPAWN, LEVELUP, ATTACH, BUTTON};
+    private int sfxCursor;
+
 
 
     private void Awake() 
@@ -62,6 +67,10 @@ public class GameManager : MonoBehaviour
         animalCount8 = PlayerPrefs.GetInt("animalCount8");
         animalCount9 = PlayerPrefs.GetInt("animalCount9");
         animalCountSum = PlayerPrefs.GetInt("animalCountSum");
+
+        Mainbgm.Play();
+        // sfxMusic[sfx.SPAWN].Play();
+        PlaySfxMusic(sfx.SPAWN);
     }
 
 
@@ -156,5 +165,14 @@ public class GameManager : MonoBehaviour
         return animalCountSum;
     }
     
+    public void PlaySfxMusic(sfx type)
+    {
+        switch(type) 
+        {
+            case sfx.SPAWN :
+                sfxMusic[0].Play();
+                break;
+        }
+    }
 
 }

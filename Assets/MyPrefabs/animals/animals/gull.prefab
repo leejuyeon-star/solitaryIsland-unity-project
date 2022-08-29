@@ -263,6 +263,7 @@ GameObject:
   - component: {fileID: -8896538788509315420}
   - component: {fileID: 6112293618943917906}
   - component: {fileID: -3326396037803424020}
+  - component: {fileID: 7029827026388151397}
   m_Layer: 0
   m_Name: gull
   m_TagString: Untagged
@@ -389,6 +390,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7029827026388151397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1454649285933422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e4e79cdb205a24e8b1e0c73e3141fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DelayTime: 10
 --- !u!1 &1792795421346870
 GameObject:
   m_ObjectHideFlags: 0

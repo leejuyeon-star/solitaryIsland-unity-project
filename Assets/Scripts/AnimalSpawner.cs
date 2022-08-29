@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;   //구조체 배열을 위함
+using UnityEngine.EventSystems;
 
  
 public class AnimalSpawner : MonoBehaviour
 {
     public int SpawnGroupNumber;
-
     
     [Serializable] public struct SpawnGroup{
         public GameObject animalPrefab;      //생성할 동물 프리팹
-        public int animalPoint;             //생성하기 위해 필요한 포인트
+        public int AccessPoint;             //생성하기 위해 필요한 포인트
+        public int Accessheart;             //생성하기 위해 필요한 heart
         public GameObject SpawnButton;        //스폰해주는 버튼
     }
 
@@ -20,6 +21,7 @@ public class AnimalSpawner : MonoBehaviour
     public GameObject animalParent;     //생성한 동물이 상속될 부모 오브젝트
     public Vector3 spawnPosition;       //동물 생성할 위치
     public GameObject _NoPointAlarm;    //"포인트가 부족합니다" 생성하는 txt오브젝트
+    public GameObject _NoHeartAlarm;    //"heart가 부족합니다" 생성하는 txt오브젝트
 
     public GameObject AnimalSpawnCamera;
     public GameObject InGamePanel;
@@ -38,18 +40,21 @@ public class AnimalSpawner : MonoBehaviour
 
     public void OnClickButton()
     {
+        int buttonNumber = findSpawnGroup();
+        
         // 해당 동물의 포인트 <= 현 포인트인 경우, 포인트 일정량 지우고 동물 생성
-        if(Spawn[0].animalPoint <= GameManager.Instance._trashCount.trashTouchCount)
+        if(Spawn[buttonNumber].AccessPoint <= GameManager.Instance._trashCount.trashTouchCount
+                && Spawn[buttonNumber].Accessheart <= GameManager.Instance.heart)
         {
             Debug.Log("동물 생성");
             // 오브젝트 설정
-            GameObject newObj = Instantiate(Spawn[0].animalPrefab); 
+            GameObject newObj = Instantiate(Spawn[buttonNumber].animalPrefab); 
             newObj.transform.parent = animalParent.transform;
             newObj.transform.localPosition = spawnPosition;
             newObj.transform.localScale = new Vector3(10,10,10);
 
             //기타 변수값 갱신, UI 변화
-            GameManager.Instance._trashCount.trashTouchCount -= Spawn[0].animalPoint;
+            GameManager.Instance._trashCount.trashTouchCount -= Spawn[buttonNumber].AccessPoint;
             int index = newObj.name.IndexOf("(Clone)");
             if (index > 0) 
                 newObj.name = newObj.name.Substring(0, index);
@@ -63,10 +68,16 @@ public class AnimalSpawner : MonoBehaviour
             AnimalSpawnPanel.SetActive(true);
             InventoryPanel.SetActive(false);
         }
-        else //그 외의 경우 "포인트가 부족합니다" 내보내기
+        else if (Spawn[buttonNumber].AccessPoint > GameManager.Instance._trashCount.trashTouchCount
+            && Spawn[buttonNumber].Accessheart <= GameManager.Instance.heart) 
         {
             Debug.Log("포인트 부족");
             _NoPointAlarm.SetActive(true);
+        }
+        else
+        {
+            Debug.Log("heart 부족");
+            _NoHeartAlarm.SetActive(true);
         }
         return;
     }
@@ -98,6 +109,17 @@ public class AnimalSpawner : MonoBehaviour
         range_Z = UnityEngine.Random.Range((range_Z) * -1, range_Z);
         Vector3 RandomPostion = new Vector3(range_X, _Y, range_Z);
         return RandomPostion;
+    }
+
+    private int findSpawnGroup()
+    {
+        for(int i=0; i<Spawn.Length; i++)
+        {
+            if(EventSystem.current.currentSelectedGameObject.name == string.Format("{0}", Spawn[i].SpawnButton.name))
+                return i;
+        }
+        Debug.Log("AnimalSpawner의 findeSpawnGroup() 오류");
+        return -1;
     }
     
 }

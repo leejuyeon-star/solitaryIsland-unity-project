@@ -60,7 +60,7 @@ public class ObjectPooling : MonoBehaviour
     
 
     //오브젝트 instantiate, 큐에 저장하는 함수
-    private void InstantiateObjects(in GameObject obj)    
+    private void InstantiateObjects(GameObject obj)    
     {
         GameObject newObj;
         int index;
@@ -79,7 +79,7 @@ public class ObjectPooling : MonoBehaviour
 
 
     //오브젝트 활성화하고 위치 설정하여 리턴
-    public GameObject ActivatePoolItem(in GameObject prefab, in Vector3 spawnPosition)
+    public GameObject ActivatePoolItem(GameObject prefab, Vector3 spawnPosition)
     {
         if(Instance.MappingQueue(prefab).Count <= 0)      
         {
@@ -92,17 +92,25 @@ public class ObjectPooling : MonoBehaviour
     }
 
 
+
     //오브젝트 비활성화하는 함수
-    public void DeactivatePoolItem(in GameObject obj)
+    public void DeactivatePoolItem(GameObject obj)
     {
         Instance.MappingQueue(obj).Enqueue(obj);
         obj.SetActive(false);
         return;
     }
 
+    // //오브젝트 일정 시간 뒤에 비활성화하는 함수
+    // public void DeactivatePoolItem(GameObject obj, float time)
+    // {
+    //     Instance.MappingQueue(obj).Enqueue(obj);
+    //     obj.SetActive(false);
+    //     return;
+    // }
 
     //오브젝트 이름에 맞는 큐 반환
-    private Queue<GameObject> MappingQueue(in GameObject prefab)
+    private Queue<GameObject> MappingQueue(GameObject prefab)
     {
         
         Queue<GameObject> ObjectQueue = new Queue<GameObject>();
@@ -163,7 +171,7 @@ public class ObjectPooling : MonoBehaviour
 
 
     //오브젝트가 상속될 부모 매핑
-    private void MappingParent(in GameObject prefab, in GameObject newObj)
+    private void MappingParent(GameObject prefab, GameObject newObj)
     {
         GameObject objectParent;
         if(prefab == trashBagPrefab) 

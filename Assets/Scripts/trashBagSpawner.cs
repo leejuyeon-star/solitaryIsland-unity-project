@@ -9,11 +9,14 @@ using UnityEngine.EventSystems;     //애니메이션 사용시 꼭 작성
 // 일정 시간에 랜덤한 문구 나오면서 쓰레기봉투 생성
 public class trashBagSpawner : MonoBehaviour
 {
-    public GameObject obj;                //쓰레기봉투
+    public GameObject TrashBagPrefab;
+    public GameObject garbageSpawnerController;
     public int objCreateMax = 3;           //최대 생성할 오브젝트 양
+
     
     private float timer;
-    public int waitingTime = 10;
+    public int waitingSpawnTime = 10;
+    public float waitingDeactivateTime = 5;
 
     private int objCreateCount;         //실제 생성할될오브젝트 양
     Vector3 spawnPosition;               //스폰될 장소
@@ -43,14 +46,15 @@ public class trashBagSpawner : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;   
-        if(timer > waitingTime)
+        if(timer > waitingSpawnTime)
         {
             //Action
-            printUI();      //UI에 띄우기
-            InstantiateTrashbag();     // 쓰레기봉투 생성
+            printUI();   
+            InstantiateTrashbag();     
             timer = 0;
         }
     }
+
 
 
     //UI에 띄우기
@@ -70,37 +74,20 @@ public class trashBagSpawner : MonoBehaviour
     }
 
 
-    //쓰레기 봉투 생성하기
     private void InstantiateTrashbag()
     {
         // spawnPosition = transform.position;
         objCreateCount = Random.Range(1, objCreateMax);
         for(int i=0; i<objCreateCount; i++){
-            GameObject clone = ObjectPooling.Instance.ActivatePoolItem(obj, new Vector3(0,0,0));
+            GameObject TrashBagClone = ObjectPooling.Instance.ActivatePoolItem(TrashBagPrefab, new Vector3(0,0,0));
+            StartCoroutine(DelayDeactivateTrashBag(waitingDeactivateTime, TrashBagClone));
         }
     }
 
-
-
-
+    IEnumerator DelayDeactivateTrashBag(float DelayTime, GameObject TrashBagClone)
+    {
+        yield return new WaitForSecondsRealtime(DelayTime);
+        ObjectPooling.Instance.DeactivatePoolItem(TrashBagClone);
+        garbageSpawnerController.GetComponent<garbageSpawner>().EffectAfterDeactivateTrashBag();
+    }
 }
-
-
-
-    
-
-	// // const string INFO = "풀링한 오브젝트에 다음을 적으세요 
-    // void OnDisable()
-    // {
-    //     ObjectPooler.ReturnToPool(gameObject);    // 한 객체에 한번만 
-        
-	// 	// CancelInvoke();    // Monobehaviour에 Invoke가 있다면 
-    // };
-
-    // public static void ReturnToPool(GameObject obj)
-	// {
-	// 	if (!inst.poolDictionary.ContainsKey(obj.name))
-	// 		throw new Exception($"Pool with tag {obj.name} doesn't exist.");
-
-	// 	inst.poolDictionary[obj.name].Enqueue(obj);
-	// }

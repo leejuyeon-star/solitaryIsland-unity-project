@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     }
     public trashCount _trashCount;
 
+    public int heart;
+
     public int playDay;     //날짜
     private int animalCountSum; //모든 동물 수
     private int animalCount0;  //동물 수
@@ -67,6 +69,7 @@ public class GameManager : MonoBehaviour
         animalCount8 = PlayerPrefs.GetInt("animalCount8");
         animalCount9 = PlayerPrefs.GetInt("animalCount9");
         animalCountSum = PlayerPrefs.GetInt("animalCountSum");
+        heart = PlayerPrefs.GetInt("heart");
 
         Mainbgm.Play();
         // sfxMusic[sfx.SPAWN].Play();
@@ -92,6 +95,8 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("animalCount8", animalCount8);
         PlayerPrefs.SetInt("animalCount9", animalCount9);
         PlayerPrefs.SetInt("animalCountSum", animalCountSum);
+        PlayerPrefs.SetInt("heart", heart);
+
     }
 
 

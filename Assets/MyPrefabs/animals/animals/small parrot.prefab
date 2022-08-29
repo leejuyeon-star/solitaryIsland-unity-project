@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: -9066370628303526526}
   - component: {fileID: 4708812490532995435}
   - component: {fileID: 4575965847533281014}
+  - component: {fileID: 3249378412597105899}
   m_Layer: 0
   m_Name: small parrot
   m_TagString: Untagged
@@ -223,6 +224,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3249378412597105899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047055524685054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e4e79cdb205a24e8b1e0c73e3141fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DelayTime: 10
 --- !u!1 &1093248766626790
 GameObject:
   m_ObjectHideFlags: 0

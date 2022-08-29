@@ -6,7 +6,7 @@ using UnityEngine;
 public class garbageSpawner : MonoBehaviour
 {
     public int garbageKind;            //오브젝트 총 개수
-    public GameObject[] garbagePrefab;       //쓰레기 프리팹
+    public GameObject[] garbagePrefab;
     public float RandomSpawnRange_X = 250f;        //랜덤으로 스폰될 장소 범위 x축
     public float RandomSpawnRange_Z = 250f;        //랜덤으로 스폰될 장소 범위 z축
     public float SpawnRange_Y = 100f;
@@ -30,23 +30,16 @@ public class garbageSpawner : MonoBehaviour
     }
 
     
-    void Update()
+    public void EffectAfterDeactivateTrashBag()
     {
-        timer += Time.deltaTime;       
-        if(timer > waitingTime)  //쓰레기봉투가 생성된 시점부터 waitingTime 이후 실행
-        {
-            Debug.Log("쓰레기봉투 삭제");
-            //Action
-            InstantiateGarbage();       //쓰레기, exploder 생성하기
+            SpawnGarbagefromTrashbag();       //쓰레기, exploder 생성하기
             printUI();      //UI반영
-            ObjectPooling.Instance.DeactivatePoolItem(gameObject);      //쓰레기봉투 삭제
-        }
     }
     
     
     
     //쓰레기, exploder 생성하기
-    private void InstantiateGarbage()
+    private void SpawnGarbagefromTrashbag()
     {
         Vector3 spawnPosition = transform.position;
         //objCreateCount만큼의 양으로 랜덤한 물건의 오브젝트를 쓰레기봉투에서 생성
@@ -75,9 +68,8 @@ public class garbageSpawner : MonoBehaviour
         int _trashCurrentCount = GameManager.Instance._trashCount.trashCurrentCount;
         for(int i=0; i<_trashCurrentCount; i++)
         {
-            int CreateObject = Random.Range(0, garbageKind);
+            int CreateObject = Random.Range(0, garbageKind+1);
             GameObject clone = ObjectPooling.Instance.ActivatePoolItem(garbagePrefab[CreateObject], ReturnRandomPosition(RandomSpawnRange_X, SpawnRange_Y, RandomSpawnRange_Z));
-            clone.transform.localScale = new Vector3(100,100,100);
         }
     }
 

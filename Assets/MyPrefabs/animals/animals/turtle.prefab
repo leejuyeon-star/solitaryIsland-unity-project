@@ -263,6 +263,7 @@ GameObject:
   - component: {fileID: 5613753317133230719}
   - component: {fileID: 6584779560706632395}
   - component: {fileID: -7541096728881097358}
+  - component: {fileID: 1808357557741314369}
   m_Layer: 0
   m_Name: turtle
   m_TagString: Untagged
@@ -389,6 +390,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1808357557741314369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510153756757108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e4e79cdb205a24e8b1e0c73e3141fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DelayTime: 10
 --- !u!1 &1938798413768582
 GameObject:
   m_ObjectHideFlags: 0

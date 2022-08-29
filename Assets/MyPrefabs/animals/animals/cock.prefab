@@ -263,6 +263,7 @@ GameObject:
   - component: {fileID: -2934972730721536797}
   - component: {fileID: -3529074164153217286}
   - component: {fileID: 7158042173065785864}
+  - component: {fileID: 8603483461688104880}
   m_Layer: 0
   m_Name: cock
   m_TagString: Untagged
@@ -389,6 +390,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8603483461688104880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541574519402986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e4e79cdb205a24e8b1e0c73e3141fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DelayTime: 10
 --- !u!1 &1803278106853324
 GameObject:
   m_ObjectHideFlags: 0

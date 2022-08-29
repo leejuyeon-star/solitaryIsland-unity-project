@@ -11,6 +11,7 @@ public class InGamePanelUIController : MonoBehaviour
     public GameObject garbageScoreTxt;
     public GameObject animalScoreTxt;
     public GameObject TimeTxt;
+    public GameObject heartTxt;
 
     private void Start()
     {
@@ -18,6 +19,7 @@ public class InGamePanelUIController : MonoBehaviour
         printGarbageCountUI();
         printAniamlCountUI();
         printTimeUI(); 
+        printHeartUI();
     }
 
 
@@ -26,6 +28,7 @@ public class InGamePanelUIController : MonoBehaviour
         printGarbageCountUI();
         printAniamlCountUI();
         printTimeUI();
+        printHeartUI();
     }
 
     public void printGarbageCountUI()
@@ -45,6 +48,12 @@ public class InGamePanelUIController : MonoBehaviour
     {
         TextMeshProUGUI TimeUITxt = TimeTxt.GetComponent<TextMeshProUGUI>();
         TimeUITxt.text = string.Format("D+{0}", GameManager.Instance.playDay);
+    }
+
+    public void printHeartUI()
+    {
+        TextMeshProUGUI heartUITxt = heartTxt.GetComponent<TextMeshProUGUI>();
+        heartUITxt.text = string.Format("{0}heart", GameManager.Instance.heart);
     }
 
 

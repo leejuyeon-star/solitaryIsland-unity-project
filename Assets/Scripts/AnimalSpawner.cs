@@ -32,13 +32,38 @@ public class AnimalSpawner : MonoBehaviour
     public float RandomSpawnRange_Z = 250f;        //랜덤으로 스폰될 장소 범위 z축
     public float SpawnRange_Y = 100f;
 
+    public GameObject Panel;
+    public GameObject hidePanel = null;
+    public GameObject touchController;
+    public GameObject ScrollAndPinch;
+    public GameObject subCamera = null;
+
+
     private void Start()
     {
         SpawnAnimal();
     }
 
+    public void activePanelButton()
+    {
+        Panel.SetActive(true);
+        touchController.SetActive(false);
+        ScrollAndPinch.SetActive(false);
+        subCamera.SetActive(true);
+        
+    }
 
-    public void OnClickButton()
+    public void inactivePanelButton()
+    {
+        touchController.SetActive(true);
+        ScrollAndPinch.SetActive(true);
+        subCamera.SetActive(false);
+        hidePanel.SetActive(true);
+        Panel.SetActive(false);
+    }
+
+
+    public void ClickAnimalButton()
     {
         int buttonNumber = findSpawnGroup();
         

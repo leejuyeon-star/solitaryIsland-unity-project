@@ -17,6 +17,7 @@ Edited by Kudoshi : 24/3/2021
 
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System;
 
 //  화면 스크롤, 확대축소
 class ScrollAndPinch : MonoBehaviour
@@ -29,11 +30,12 @@ class ScrollAndPinch : MonoBehaviour
     public float DecreaseCameraPanSpeed = 1; //Default speed is 1
     public float CameraUpperHeightBound; //Zoom out
     public float CameraLowerHeightBound; //Zoom in
+    public float MaxDistanceX;
+    public float MaxDistanceZ;
 
     private Vector3 cameraStartPosition;
     private void Awake()
     {
-        Debug.Log("Awake");
         if (Camera == null)
             Camera = Camera.main;
 
@@ -42,6 +44,7 @@ class ScrollAndPinch : MonoBehaviour
 
     private void Update()
     {
+        Vector3 camPositionBeforeAdjustment = Camera.transform.position;
         //Update Plane
         if (Input.touchCount >= 1)
             Plane.SetNormalAndPosition(transform.up, transform.position);
@@ -56,6 +59,13 @@ class ScrollAndPinch : MonoBehaviour
             Delta1 = PlanePositionDelta(Input.GetTouch(0))/DecreaseCameraPanSpeed;
             if (Input.GetTouch(0).phase == TouchPhase.Moved)
                 Camera.transform.Translate(Delta1, Space.World);
+            
+            //Drag Limit
+            if (Math.Abs(cameraStartPosition.x - Camera.transform.position.x) > MaxDistanceX || Math.Abs(cameraStartPosition.z - Camera.transform.position.z) > MaxDistanceZ)
+            {
+                Camera.transform.position = camPositionBeforeAdjustment;
+            }
+
         }
 
         //Pinch (Zoom Function)
@@ -75,11 +85,10 @@ class ScrollAndPinch : MonoBehaviour
                 return;
 
             //Move cam amount the mid ray
-            Vector3 camPositionBeforeAdjustment = Camera.transform.position;
             Camera.transform.position = Vector3.LerpUnclamped(pos1, Camera.transform.position, 1 / zoom);
 
-            //Restricts zoom height 
             
+            //Restricts zoom height 
             //Upper (ZoomOut)
             if (Camera.transform.position.y > (cameraStartPosition.y + CameraUpperHeightBound))
             {
@@ -95,6 +104,8 @@ class ScrollAndPinch : MonoBehaviour
             //Rotation Function
             if (Rotate && pos2b != pos2)
                 Camera.transform.RotateAround(pos1, Plane.normal, Vector3.SignedAngle(pos2 - pos1, pos2b - pos1b, Plane.normal));
+
+
         }
 
     }

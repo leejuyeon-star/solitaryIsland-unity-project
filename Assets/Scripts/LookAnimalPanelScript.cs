@@ -13,6 +13,7 @@ public class LookAnimalPanelScript : MonoBehaviour
 
     public void activePanelButton()
     {
+        GameManager.Instance.PlaySfxMusic(GameManager.sfx.BUTTON);
         Panel.SetActive(true);
         touchController.SetActive(false);
         ScrollAndPinch.SetActive(false);
@@ -23,6 +24,7 @@ public class LookAnimalPanelScript : MonoBehaviour
 
     public void inactivePanelButton()
     {
+        GameManager.Instance.PlaySfxMusic(GameManager.sfx.BUTTON);
         touchController.SetActive(true);
         ScrollAndPinch.SetActive(true);
         if(subCamera != null)

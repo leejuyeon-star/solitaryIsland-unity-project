@@ -14,7 +14,7 @@ public class garbageSpawner : MonoBehaviour
 
     public int objCreateCount;         //한번에 스폰할 오브젝트 개수
     public GameObject exploder;        //폭탄 오브젝트
-    public int waitingTime = 5;
+    public int waitingTime;
 
     private float timer;
 
@@ -26,7 +26,7 @@ public class garbageSpawner : MonoBehaviour
     void OnEnable()
     {
         timer = 0.0f;
-        waitingTime = Random.Range(5, 10);
+        waitingTime = Random.Range(waitingTime, waitingTime+2);
     }
 
     
@@ -47,6 +47,7 @@ public class garbageSpawner : MonoBehaviour
         {
             int CreateObject = Random.Range(0, garbageKind+1);
             GameObject clone = ObjectPooling.Instance.ActivatePoolItem(garbagePrefab[CreateObject], spawnPosition);
+            clone.transform.localScale = new Vector3(10,10,10);
         }
         //exploder도 생성
         GameObject exploderClone = ObjectPooling.Instance.ActivatePoolItem(exploder, spawnPosition);

@@ -15,24 +15,24 @@ public class GameManager : MonoBehaviour
     }
     public trashCount _trashCount;
 
-    public int heart;
+    // public int heart;
 
     public int playDay;     //날짜
-    private int animalCountSum; //모든 동물 수
-    private int animalCount0;  //동물 수
-    private int animalCount1;  //동물 수
-    private int animalCount2;  //동물 수
-    private int animalCount3;  //동물 수
-    private int animalCount4;  //동물 수
-    private int animalCount5;  //동물 수
-    private int animalCount6;  //동물 수
-    private int animalCount7;  //동물 수
-    private int animalCount8;  //동물 수
-    private int animalCount9;  //동물 수
+    public int animalCountSum; //모든 동물 수
+    public int animalCount0;  //동물 수
+    public int animalCount1;  //동물 수
+    public int animalCount2;  //동물 수
+    public int animalCount3;  //동물 수
+    public int animalCount4;  //동물 수
+    public int animalCount5;  //동물 수
+    public int animalCount6;  //동물 수
+    public int animalCount7;  //동물 수
+    public int animalCount8;  //동물 수
+    public int animalCount9;  //동물 수
 
     public AudioSource Mainbgm;
     public AudioSource[] sfxMusic;
-    public enum sfx {SPAWN, LEVELUP, ATTACH, BUTTON};
+    public enum sfx {SPAWNANIMAL, BUTTON, LEVELUP, PICKUP,SPAWNTRASHBAG };
     private int sfxCursor;
 
 
@@ -41,39 +41,37 @@ public class GameManager : MonoBehaviour
     {
         Instance = this; 
 
-        PlayerPrefs.SetInt("trashCurrentCount", 5);     //!로드될 쓰레기 양 유지하기 위한 장치 (작품 완성시 지우기)
-        PlayerPrefs.SetInt("animalCount0", 1);           //!로드될 동물 수 유지하기 위한 장치 (작품 완성시 지우기)
-        PlayerPrefs.SetInt("animalCount1", 1);          //!로드될 동물 수 유지하기 위한 장치 (작품 완성시 지우기)
-        PlayerPrefs.SetInt("animalCount2", 1);          //!로드될 동물 수 유지하기 위한 장치 (작품 완성시 지우기)
-        PlayerPrefs.SetInt("animalCount3", 1);          //!로드될 동물 수 유지하기 위한 장치 (작품 완성시 지우기)
-        PlayerPrefs.SetInt("animalCount4", 1);          //!로드될 동물 수 유지하기 위한 장치 (작품 완성시 지우기)
-        PlayerPrefs.SetInt("animalCount5", 1);          //!로드될 동물 수 유지하기 위한 장치 (작품 완성시 지우기)
-        PlayerPrefs.SetInt("animalCount6", 1);          //!로드될 동물 수 유지하기 위한 장치 (작품 완성시 지우기)
-        PlayerPrefs.SetInt("animalCount7", 1);          //!로드될 동물 수 유지하기 위한 장치 (작품 완성시 지우기)
-        PlayerPrefs.SetInt("animalCount8", 1);          //!로드될 동물 수 유지하기 위한 장치 (작품 완성시 지우기)
-        PlayerPrefs.SetInt("animalCount9", 1);          //!로드될 동물 수 유지하기 위한 장치 (작품 완성시 지우기)
-        PlayerPrefs.SetInt("animalCountSum", 10);
+        // PlayerPrefs.SetInt("trashCurrentCount", 5);     //!로드될 쓰레기 양 유지하기 위한 장치 (작품 완성시 지우기)
+        // PlayerPrefs.SetInt("animalCount0", 1);           //!로드될 동물 수 유지하기 위한 장치 (작품 완성시 지우기)
+        // PlayerPrefs.SetInt("animalCount1", 1);          //!로드될 동물 수 유지하기 위한 장치 (작품 완성시 지우기)
+        // PlayerPrefs.SetInt("animalCount2", 1);          //!로드될 동물 수 유지하기 위한 장치 (작품 완성시 지우기)
+        // PlayerPrefs.SetInt("animalCount3", 1);          //!로드될 동물 수 유지하기 위한 장치 (작품 완성시 지우기)
+        // PlayerPrefs.SetInt("animalCount4", 1);          //!로드될 동물 수 유지하기 위한 장치 (작품 완성시 지우기)
+        // PlayerPrefs.SetInt("animalCount5", 1);          //!로드될 동물 수 유지하기 위한 장치 (작품 완성시 지우기)
+        // PlayerPrefs.SetInt("animalCount6", 1);          //!로드될 동물 수 유지하기 위한 장치 (작품 완성시 지우기)
+        // PlayerPrefs.SetInt("animalCount7", 1);          //!로드될 동물 수 유지하기 위한 장치 (작품 완성시 지우기)
+        // PlayerPrefs.SetInt("animalCount8", 1);          //!로드될 동물 수 유지하기 위한 장치 (작품 완성시 지우기)
+        // PlayerPrefs.SetInt("animalCount9", 1);          //!로드될 동물 수 유지하기 위한 장치 (작품 완성시 지우기)
+        // PlayerPrefs.SetInt("animalCountSum", 10);
 
-        // 데이터 불러오기
-        _trashCount.trashTouchCount = PlayerPrefs.GetInt("trashTouchCount");
-        _trashCount.trashCurrentCount = PlayerPrefs.GetInt("trashCurrentCount");
-        playDay = PlayerPrefs.GetInt("playDay");
-        animalCount0 = PlayerPrefs.GetInt("animalCount0");
-        animalCount1 = PlayerPrefs.GetInt("animalCount1");
-        animalCount2 = PlayerPrefs.GetInt("animalCount2");
-        animalCount3 = PlayerPrefs.GetInt("animalCount3");
-        animalCount4 = PlayerPrefs.GetInt("animalCount4");
-        animalCount5 = PlayerPrefs.GetInt("animalCount5");
-        animalCount6 = PlayerPrefs.GetInt("animalCount6");
-        animalCount7 = PlayerPrefs.GetInt("animalCount7");
-        animalCount8 = PlayerPrefs.GetInt("animalCount8");
-        animalCount9 = PlayerPrefs.GetInt("animalCount9");
-        animalCountSum = PlayerPrefs.GetInt("animalCountSum");
-        heart = PlayerPrefs.GetInt("heart");
+        // // 데이터 불러오기
+        // _trashCount.trashTouchCount = PlayerPrefs.GetInt("trashTouchCount");
+        // _trashCount.trashCurrentCount = PlayerPrefs.GetInt("trashCurrentCount");
+        // playDay = PlayerPrefs.GetInt("playDay");
+        // animalCount0 = PlayerPrefs.GetInt("animalCount0");
+        // animalCount1 = PlayerPrefs.GetInt("animalCount1");
+        // animalCount2 = PlayerPrefs.GetInt("animalCount2");
+        // animalCount3 = PlayerPrefs.GetInt("animalCount3");
+        // animalCount4 = PlayerPrefs.GetInt("animalCount4");
+        // animalCount5 = PlayerPrefs.GetInt("animalCount5");
+        // animalCount6 = PlayerPrefs.GetInt("animalCount6");
+        // animalCount7 = PlayerPrefs.GetInt("animalCount7");
+        // animalCount8 = PlayerPrefs.GetInt("animalCount8");
+        // animalCount9 = PlayerPrefs.GetInt("animalCount9");
+        // animalCountSum = PlayerPrefs.GetInt("animalCountSum");
+        // heart = PlayerPrefs.GetInt("heart");
 
         Mainbgm.Play();
-        // sfxMusic[sfx.SPAWN].Play();
-        PlaySfxMusic(sfx.SPAWN);
     }
 
 
@@ -81,21 +79,21 @@ public class GameManager : MonoBehaviour
     //object가 파괴될 때, Scene이 변경될 때, 게임이 종료될 때 1회 호출
     private void OnDestroy()
     {
-        PlayerPrefs.SetInt("trashTouchCount", _trashCount.trashTouchCount);
-        PlayerPrefs.SetInt("trashCurrentCount", _trashCount.trashCurrentCount);
-        PlayerPrefs.SetInt("playDay", playDay);
-        PlayerPrefs.SetInt("animalCount0", animalCount0);
-        PlayerPrefs.SetInt("animalCount1", animalCount1);
-        PlayerPrefs.SetInt("animalCount2", animalCount2);
-        PlayerPrefs.SetInt("animalCount3", animalCount3);
-        PlayerPrefs.SetInt("animalCount4", animalCount4);
-        PlayerPrefs.SetInt("animalCount5", animalCount5);
-        PlayerPrefs.SetInt("animalCount6", animalCount6);
-        PlayerPrefs.SetInt("animalCount7", animalCount7);
-        PlayerPrefs.SetInt("animalCount8", animalCount8);
-        PlayerPrefs.SetInt("animalCount9", animalCount9);
-        PlayerPrefs.SetInt("animalCountSum", animalCountSum);
-        PlayerPrefs.SetInt("heart", heart);
+        // PlayerPrefs.SetInt("trashTouchCount", _trashCount.trashTouchCount);
+        // PlayerPrefs.SetInt("trashCurrentCount", _trashCount.trashCurrentCount);
+        // PlayerPrefs.SetInt("playDay", playDay);
+        // PlayerPrefs.SetInt("animalCount0", animalCount0);
+        // PlayerPrefs.SetInt("animalCount1", animalCount1);
+        // PlayerPrefs.SetInt("animalCount2", animalCount2);
+        // PlayerPrefs.SetInt("animalCount3", animalCount3);
+        // PlayerPrefs.SetInt("animalCount4", animalCount4);
+        // PlayerPrefs.SetInt("animalCount5", animalCount5);
+        // PlayerPrefs.SetInt("animalCount6", animalCount6);
+        // PlayerPrefs.SetInt("animalCount7", animalCount7);
+        // PlayerPrefs.SetInt("animalCount8", animalCount8);
+        // PlayerPrefs.SetInt("animalCount9", animalCount9);
+        // PlayerPrefs.SetInt("animalCountSum", animalCountSum);
+        // PlayerPrefs.SetInt("heart", heart);
 
     }
 
@@ -174,9 +172,22 @@ public class GameManager : MonoBehaviour
     {
         switch(type) 
         {
-            case sfx.SPAWN :
+            case sfx.SPAWNANIMAL :
                 sfxMusic[0].Play();
                 break;
+            case sfx.BUTTON :
+                sfxMusic[1].Play();
+                break;
+            case sfx.LEVELUP :
+                sfxMusic[2].Play();
+                break;
+            case sfx.PICKUP :
+                sfxMusic[3].Play();
+                break;
+            case sfx.SPAWNTRASHBAG :
+                sfxMusic[4].Play();
+                break;
+            
         }
     }
 

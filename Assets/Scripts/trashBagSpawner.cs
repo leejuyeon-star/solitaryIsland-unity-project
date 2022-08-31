@@ -16,7 +16,7 @@ public class trashBagSpawner : MonoBehaviour
     
     private float timer;
     public int waitingSpawnTime = 10;
-    public float waitingDeactivateTime = 5;
+    public float waitingDeactivateTime = 2;
 
     private int objCreateCount;         //실제 생성할될오브젝트 양
     Vector3 spawnPosition;               //스폰될 장소
@@ -81,7 +81,9 @@ public class trashBagSpawner : MonoBehaviour
         for(int i=0; i<objCreateCount; i++){
             GameObject TrashBagClone = ObjectPooling.Instance.ActivatePoolItem(TrashBagPrefab, new Vector3(0,0,0));
             StartCoroutine(DelayDeactivateTrashBag(waitingDeactivateTime, TrashBagClone));
+            TrashBagClone.transform.localScale = new Vector3(0.1f,0.1f,0.1f);
         }
+        GameManager.Instance.PlaySfxMusic(GameManager.sfx.SPAWNTRASHBAG);
     }
 
     IEnumerator DelayDeactivateTrashBag(float DelayTime, GameObject TrashBagClone)

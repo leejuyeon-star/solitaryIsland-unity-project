@@ -76,13 +76,16 @@ public class playerController : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 
     //state가 walk일때 or run일때 이동
     private void Update() {
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
         //walk일 때
         if(stateint == walkState){
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX|RigidbodyConstraints.FreezeRotationZ;
             transform.position += moveDirection * walkSpeed * Time.deltaTime;
             transform.LookAt(transform.position + moveDirection);
         }
         //run일 때
         else if (stateint == runState){
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX|RigidbodyConstraints.FreezeRotationZ;
             transform.position += moveDirection * runSpeed * Time.deltaTime;
             transform.LookAt(transform.position + moveDirection);
         }

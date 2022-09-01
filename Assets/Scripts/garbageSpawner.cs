@@ -45,7 +45,7 @@ public class garbageSpawner : MonoBehaviour
         //objCreateCount만큼의 양으로 랜덤한 물건의 오브젝트를 쓰레기봉투에서 생성
         for(int i=0; i<objCreateCount; i++)
         {
-            int CreateObject = Random.Range(0, garbageKind+1);
+            int CreateObject = Random.Range(0, garbageKind);
             GameObject clone = ObjectPooling.Instance.ActivatePoolItem(garbagePrefab[CreateObject], spawnPosition);
             clone.transform.localScale = new Vector3(10,10,10);
         }

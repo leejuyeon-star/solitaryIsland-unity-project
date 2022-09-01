@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;   //구조체 배열을 위함
-using UnityEngine.EventSystems;
+// using UnityEngine.EventSystems;
 
  
 public class AnimalManage : MonoBehaviour
@@ -14,11 +14,13 @@ public class AnimalManage : MonoBehaviour
         // public int Accessheart;             //생성하기 위해 필요한 heart
         // public GameObject SpawnButton;        //스폰해주는 버튼
         public int DestroyPoint;        //소멸하기 위해 필요한 포인트
+        public GameObject animalParent;     //생성한 동물이 상속될 부모 오브젝트
+        public GameObject[] animalObject;
+        public bool isDestroy;
     }
 
     
     [SerializeField] SpawnGroup[] Spawn;
-    public GameObject[] animalParent;     //생성한 동물이 상속될 부모 오브젝트
     public Vector3 spawnPosition;       //동물 생성할 위치
     // public GameObject _NoPointAlarm;    //"포인트가 부족합니다" 생성하는 txt오브젝트
     // public GameObject _NoHeartAlarm;    //"heart가 부족합니다" 생성하는 txt오브젝트
@@ -37,14 +39,11 @@ public class AnimalManage : MonoBehaviour
     public GameObject touchController;
     public GameObject ScrollAndPinch;
 
-    private int playDay;
+    private int trashCount;
+
     
 
 
-    private void Start()
-    {
-        SpawnAnimal();
-    }
 
     public void activePanelButton()
     {
@@ -113,22 +112,22 @@ public class AnimalManage : MonoBehaviour
 
 
     // 로드한 만큼의 양으로 동물 오브젝트 생성
-    private void SpawnAnimal()
-    {
-        for(int i=0; i<SpawnGroupNumber; i++)
-        {
-            for(int j=0; j<GameManager.Instance.MappingAnimalCount(Spawn[i].animalPrefab); j++)
-            {
-                GameObject newObj = Instantiate(Spawn[i].animalPrefab); 
-                newObj.transform.parent = animalParent[i].transform;
-                newObj.transform.localPosition = ReturnRandomPosition(RandomSpawnRange_X, SpawnRange_Y, RandomSpawnRange_Z);
-                newObj.transform.localScale = new Vector3(1,1,1);
-                int index = newObj.name.IndexOf("(Clone)");
-                if (index > 0) 
-                    newObj.name = newObj.name.Substring(0, index);
-            }   
-        }
-    }
+    // private void SpawnAnimal()
+    // {
+    //     for(int i=0; i<SpawnGroupNumber; i++)
+    //     {
+    //         for(int j=0; j<GameManager.Instance.MappingAnimalCount(Spawn[i].animalPrefab); j++)
+    //         {
+    //             GameObject newObj = Instantiate(Spawn[i].animalPrefab); 
+    //             newObj.transform.parent = animalParent[i].transform;
+    //             newObj.transform.localPosition = ReturnRandomPosition(RandomSpawnRange_X, SpawnRange_Y, RandomSpawnRange_Z);
+    //             newObj.transform.localScale = new Vector3(1,1,1);
+    //             int index = newObj.name.IndexOf("(Clone)");
+    //             if (index > 0) 
+    //                 newObj.name = newObj.name.Substring(0, index);
+    //         }   
+    //     }
+    // }
     
 
     // Vector3(0 ~ range_X, _Y, 0 ~ range_Z) 범위 내에서 랜덤한 위치 반환 
@@ -142,54 +141,58 @@ public class AnimalManage : MonoBehaviour
 
     private void DestroyAnimal(int Number)
     {
-        Spawn[Number].animalPrefab.GetComponent<animalAnimationControll>().animateAnimalDeath();
-        StartCoroutine(Delay(2));
-        Destroy(animalParent[Number]);
+        foreach(GameObject obj in Spawn[Number].animalObject)
+        {
+            obj.GetComponent<animalWalk>().Stop();
+            IEnumerator coroutin = rotateAnimal(obj);
+            StartCoroutine(coroutin);
+            // obj.GetComponent<animalAnimationControll>().animateAnimalDeath();
+        }
+        IEnumerator coroutine = DelayDestroy(Number);
+        StartCoroutine(coroutine);
+        Spawn[Number].isDestroy = true;
     }
 
-    IEnumerator Delay(float DelayTime)
+    IEnumerator rotateAnimal(GameObject obj)
     {
-        yield return new WaitForSecondsRealtime(DelayTime);
+        float time = 0;
+        while(time <= 2)
+        {
+            Debug.Log(time);
+            obj.transform.Rotate(new Vector3(0,0,time*1f));
+            time += Time.deltaTime;
+            yield return null;
+        }
+    }
+
+    IEnumerator DelayDestroy(int Number)
+    {
+        yield return new WaitForSeconds(6f);
+        Destroy(Spawn[Number].animalParent);
     }
     
 
     private void Update()
     {
-        playDay = GameManager.Instance.playDay;
-        if(playDay >= Spawn[0].DestroyPoint && playDay < Spawn[1].DestroyPoint)
-            // DestroyAnimal(Spawn[0].animalPrefab);
+
+        trashCount = GameManager.Instance._trashCount.trashCurrentCount;
+        if(trashCount >= Spawn[0].DestroyPoint && trashCount < Spawn[1].DestroyPoint && !(Spawn[0].isDestroy))
             DestroyAnimal(0);
-        else if(playDay >= Spawn[1].DestroyPoint && playDay < Spawn[2].DestroyPoint)
-            // DestroyAnimal(Spawn[1].animalPrefab);
+        else if(trashCount >= Spawn[1].DestroyPoint && trashCount < Spawn[2].DestroyPoint && !(Spawn[1].isDestroy))
             DestroyAnimal(1);
-        else if(playDay >= Spawn[2].DestroyPoint && playDay < Spawn[3].DestroyPoint)
-            // DestroyAnimal(Spawn[2].animalPrefab);
+        else if(trashCount >= Spawn[2].DestroyPoint && trashCount < Spawn[3].DestroyPoint && !(Spawn[2].isDestroy))
             DestroyAnimal(2);
-        else if(playDay >= Spawn[3].DestroyPoint && playDay < Spawn[4].DestroyPoint)
-            // DestroyAnimal(Spawn[3].animalPrefab);
+        else if(trashCount >= Spawn[3].DestroyPoint && trashCount < Spawn[4].DestroyPoint && !(Spawn[3].isDestroy))
             DestroyAnimal(3);
-        else if(playDay >= Spawn[4].DestroyPoint && playDay < Spawn[5].DestroyPoint)
-            // DestroyAnimal(Spawn[4].animalPrefab);
+        else if(trashCount >= Spawn[4].DestroyPoint && trashCount < Spawn[5].DestroyPoint && !(Spawn[4].isDestroy))
             DestroyAnimal(4);
-        else if(playDay >= Spawn[5].DestroyPoint && playDay < Spawn[6].DestroyPoint)
-            // DestroyAnimal(Spawn[5].animalPrefab);
-            DestroyAnimal(5);
-        else if(playDay >= Spawn[6].DestroyPoint && playDay < Spawn[7].DestroyPoint)
-            // DestroyAnimal(Spawn[6].animalPrefab);
-            DestroyAnimal(6);
-        else if(playDay >= Spawn[7].DestroyPoint && playDay < Spawn[8].DestroyPoint)
-            // DestroyAnimal(Spawn[7].animalPrefab);
-            DestroyAnimal(7);
-        else if(playDay >= Spawn[8].DestroyPoint && playDay < Spawn[9].DestroyPoint)
-            // DestroyAnimal(Spawn[8].animalPrefab);
-            DestroyAnimal(8);
-        else if(playDay >= Spawn[9].DestroyPoint)
+        else if(trashCount >= Spawn[5].DestroyPoint && trashCount < Spawn[6].DestroyPoint && !(Spawn[5].isDestroy))
         {
-            // DestroyAnimal(Spawn[9].animalPrefab);
-            DestroyAnimal(9);
+            DestroyAnimal(5);
             Debug.Log("게임오버");
         }
-        return;
+  
+
     }
 
     // private int findSpawnGroup()
@@ -202,6 +205,17 @@ public class AnimalManage : MonoBehaviour
     //     Debug.Log("AnimalSpawner의 findeSpawnGroup() 오류");
     //     return -1;
     // }
+
+
+
+
+
+
+
+
+
+
+
     
 }
 

@@ -18,17 +18,17 @@ public class GameManager : MonoBehaviour
     // public int heart;
 
     public int playDay;     //날짜
-    public int animalCountSum; //모든 동물 수
-    public int animalCount0;  //동물 수
-    public int animalCount1;  //동물 수
-    public int animalCount2;  //동물 수
-    public int animalCount3;  //동물 수
-    public int animalCount4;  //동물 수
-    public int animalCount5;  //동물 수
-    public int animalCount6;  //동물 수
-    public int animalCount7;  //동물 수
-    public int animalCount8;  //동물 수
-    public int animalCount9;  //동물 수
+    // public int animalCountSum; //모든 동물 수
+    // public int animalCount0;  //동물 수
+    // public int animalCount1;  //동물 수
+    // public int animalCount2;  //동물 수
+    // public int animalCount3;  //동물 수
+    // public int animalCount4;  //동물 수
+    // public int animalCount5;  //동물 수
+    // public int animalCount6;  //동물 수
+    // public int animalCount7;  //동물 수
+    // public int animalCount8;  //동물 수
+    // public int animalCount9;  //동물 수
 
     public AudioSource Mainbgm;
     public AudioSource[] sfxMusic;
@@ -98,75 +98,75 @@ public class GameManager : MonoBehaviour
     }
 
 
-    //해당 동물 오브젝트에 맞는 animalCount 반환
-    public ref int MappingAnimalCount(GameObject obj)
-    {
-        if(obj.name == "bear")
-        {
-            return ref GameManager.Instance.animalCount0;
-        }
-        else if(obj.name == "bull")
-        {
-            return ref GameManager.Instance.animalCount1;
-        }
-        else if(obj.name == "camel")
-        {
-            return ref GameManager.Instance.animalCount2;
-        }
-        else if(obj.name == "chick")
-        {
-            return ref GameManager.Instance.animalCount3;
-        }
-        else if(obj.name == "chicken")
-        {
-            return ref GameManager.Instance.animalCount4;
-        }
-        else if(obj.name == "cock")
-        {
-            return ref GameManager.Instance.animalCount5;
-        }
-        else if(obj.name == "cow")
-        {
-            return ref GameManager.Instance.animalCount6;
-        }
-        else if(obj.name == "deer")
-        {
-            return ref GameManager.Instance.animalCount7;
-        }
-        else if(obj.name == "dog")
-        {
-            return ref GameManager.Instance.animalCount8;
-        }
-        else if(obj.name == "dove")
-        {
-            return ref GameManager.Instance.animalCount9;
-        }
-        else
-        {
-            Debug.Log(" error!! GameManager의 MappingAnimalCount 오류!");
-            return ref GameManager.Instance.animalCount0;
-        }
-    }
+    // //해당 동물 오브젝트에 맞는 animalCount 반환
+    // public ref int MappingAnimalCount(GameObject obj)
+    // {
+    //     if(obj.name == "bear")
+    //     {
+    //         return ref GameManager.Instance.animalCount0;
+    //     }
+    //     else if(obj.name == "bull")
+    //     {
+    //         return ref GameManager.Instance.animalCount1;
+    //     }
+    //     else if(obj.name == "camel")
+    //     {
+    //         return ref GameManager.Instance.animalCount2;
+    //     }
+    //     else if(obj.name == "chick")
+    //     {
+    //         return ref GameManager.Instance.animalCount3;
+    //     }
+    //     else if(obj.name == "chicken")
+    //     {
+    //         return ref GameManager.Instance.animalCount4;
+    //     }
+    //     else if(obj.name == "cock")
+    //     {
+    //         return ref GameManager.Instance.animalCount5;
+    //     }
+    //     else if(obj.name == "cow")
+    //     {
+    //         return ref GameManager.Instance.animalCount6;
+    //     }
+    //     else if(obj.name == "deer")
+    //     {
+    //         return ref GameManager.Instance.animalCount7;
+    //     }
+    //     else if(obj.name == "dog")
+    //     {
+    //         return ref GameManager.Instance.animalCount8;
+    //     }
+    //     else if(obj.name == "dove")
+    //     {
+    //         return ref GameManager.Instance.animalCount9;
+    //     }
+    //     else
+    //     {
+    //         Debug.Log(" error!! GameManager의 MappingAnimalCount 오류!");
+    //         return ref GameManager.Instance.animalCount0;
+    //     }
+    // }
 
     
-    public void PlusAnimalCount(GameObject Obj)
-    {
-        MappingAnimalCount(Obj)++;
-        animalCountSum++;
-        return;
-    }
+    // public void PlusAnimalCount(GameObject Obj)
+    // {
+    //     MappingAnimalCount(Obj)++;
+    //     animalCountSum++;
+    //     return;
+    // }
 
-    public void MinusAnimalCount(GameObject Obj)
-    {
-        MappingAnimalCount(Obj)--;
-        animalCountSum--;
-        return;
-    }
+    // public void MinusAnimalCount(GameObject Obj)
+    // {
+    //     MappingAnimalCount(Obj)--;
+    //     animalCountSum--;
+    //     return;
+    // }
 
-    public int GetAnimalCountSum()
-    {
-        return animalCountSum;
-    }
+    // public int GetAnimalCountSum()
+    // {
+    //     return animalCountSum;
+    // }
     
     public void PlaySfxMusic(sfx type)
     {

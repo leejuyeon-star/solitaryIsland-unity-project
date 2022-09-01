@@ -27,10 +27,7 @@ public class ObjectPooling : MonoBehaviour
     private Queue<GameObject> garbageQueue3 = new Queue<GameObject>();  //쓰레기 큐
     private Queue<GameObject> garbageQueue4 = new Queue<GameObject>();  //쓰레기 큐
     private Queue<GameObject> garbageQueue5 = new Queue<GameObject>();  //쓰레기 큐
-    private Queue<GameObject> garbageQueue6 = new Queue<GameObject>();  //쓰레기 큐
-    private Queue<GameObject> garbageQueue7 = new Queue<GameObject>();  //쓰레기 큐
-    private Queue<GameObject> garbageQueue8 = new Queue<GameObject>();  //쓰레기 큐
-    private Queue<GameObject> garbageQueue9 = new Queue<GameObject>();  //쓰레기 큐
+
 
     
     private void Awake()
@@ -50,10 +47,7 @@ public class ObjectPooling : MonoBehaviour
         InstantiateObjects(garbagePrefab[3]);
         InstantiateObjects(garbagePrefab[4]);
         InstantiateObjects(garbagePrefab[5]);
-        InstantiateObjects(garbagePrefab[6]);
-        InstantiateObjects(garbagePrefab[7]);
-        InstantiateObjects(garbagePrefab[8]);
-        InstantiateObjects(garbagePrefab[9]);
+
         return;
     }   
 
@@ -145,22 +139,6 @@ public class ObjectPooling : MonoBehaviour
         else if (prefab.name == garbagePrefab[5].name)
         {
             ObjectQueue = garbageQueue5;
-        }
-        else if (prefab.name == garbagePrefab[6].name)
-        {
-            ObjectQueue = garbageQueue6;
-        }
-        else if (prefab.name == garbagePrefab[7].name)
-        {
-            ObjectQueue = garbageQueue7;
-        }
-        else if (prefab.name == garbagePrefab[8].name)
-        {
-            ObjectQueue = garbageQueue8;
-        }
-        else if (prefab.name == garbagePrefab[9].name)
-        {
-            ObjectQueue = garbageQueue9;
         }
         else
         {

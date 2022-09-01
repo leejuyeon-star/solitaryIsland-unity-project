@@ -345,8 +345,8 @@ GameObject:
   - component: {fileID: 23254270174184090}
   - component: {fileID: -3009993819956407967}
   - component: {fileID: -8589818281022315475}
-  - component: {fileID: -3918156120348425483}
   - component: {fileID: -6510031371055027475}
+  - component: {fileID: -1575045501971395691}
   m_Layer: 0
   m_Name: bull
   m_TagString: Untagged
@@ -454,26 +454,6 @@ CapsuleCollider:
   m_Height: 8.576082
   m_Direction: 1
   m_Center: {x: 0.014207602, y: 6.8858967, z: 1.5298185}
---- !u!95 &-3918156120348425483
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1795829677563072}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fa8a3f803d562f240a03add7fae9b787, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &-6510031371055027475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -486,6 +466,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34039bd8a2dbafa4abd6cae042e8418a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-1575045501971395691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795829677563072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da8874d561ae2a4a93f3532fc11a50e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSpeed: 5
+  runSpeed: 10
+  MinState: 1
+  MaxState: 5
+  walkState: 4
+  runState: 5
 --- !u!1 &1980567435865216
 GameObject:
   m_ObjectHideFlags: 0

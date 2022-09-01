@@ -180,6 +180,8 @@ GameObject:
   - component: {fileID: -5633375002482968858}
   - component: {fileID: -9160391982026416825}
   - component: {fileID: -2895131697778665714}
+  - component: {fileID: 8771566672953584908}
+  - component: {fileID: 3419996947493661878}
   m_Layer: 0
   m_Name: duck
   m_TagString: Untagged
@@ -306,6 +308,42 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8771566672953584908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734435310160168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da8874d561ae2a4a93f3532fc11a50e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSpeed: 5
+  runSpeed: 10
+  MinState: 1
+  MaxState: 5
+  walkState: 4
+  runState: 5
+--- !u!114 &3419996947493661878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734435310160168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da8874d561ae2a4a93f3532fc11a50e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSpeed: 5
+  runSpeed: 10
+  MinState: 1
+  MaxState: 5
+  walkState: 4
+  runState: 5
 --- !u!1 &1870462779374274
 GameObject:
   m_ObjectHideFlags: 0

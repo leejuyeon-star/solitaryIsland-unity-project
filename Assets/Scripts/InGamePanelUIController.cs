@@ -38,7 +38,7 @@ public class InGamePanelUIController : MonoBehaviour
     public void printAniamlCountUI()
     {
         TextMeshProUGUI animalUITxt = animalScoreTxt.GetComponent<TextMeshProUGUI>();
-        animalUITxt.text = string.Format("{0}", GameManager.Instance.GetAnimalCountSum()); 
+        // animalUITxt.text = string.Format("{0}", GameManager.Instance.GetAnimalCountSum()); 
     }
 
     public void printTimeUI()

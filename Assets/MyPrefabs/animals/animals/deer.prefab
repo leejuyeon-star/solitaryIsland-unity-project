@@ -345,8 +345,8 @@ GameObject:
   - component: {fileID: 23234101834840834}
   - component: {fileID: 3275726990517031215}
   - component: {fileID: 6362074791184013257}
-  - component: {fileID: 1438696572610165109}
   - component: {fileID: -8160240293147888390}
+  - component: {fileID: -52986532853041612}
   m_Layer: 0
   m_Name: deer
   m_TagString: Untagged
@@ -453,26 +453,6 @@ CapsuleCollider:
   m_Height: 11.636936
   m_Direction: 1
   m_Center: {x: 0, y: 9.47476, z: -0.62649345}
---- !u!95 &1438696572610165109
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1961404579748578}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fa8a3f803d562f240a03add7fae9b787, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &-8160240293147888390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -485,3 +465,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34039bd8a2dbafa4abd6cae042e8418a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-52986532853041612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961404579748578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da8874d561ae2a4a93f3532fc11a50e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSpeed: 5
+  runSpeed: 10
+  MinState: 1
+  MaxState: 5
+  walkState: 4
+  runState: 5

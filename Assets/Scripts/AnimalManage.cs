@@ -19,6 +19,8 @@ public class AnimalManage : MonoBehaviour
         public bool isDestroy;
     }
 
+    private int trashCount;
+
     
     [SerializeField] SpawnGroup[] Spawn;
     public Vector3 spawnPosition;       //동물 생성할 위치
@@ -26,41 +28,14 @@ public class AnimalManage : MonoBehaviour
     // public GameObject _NoHeartAlarm;    //"heart가 부족합니다" 생성하는 txt오브젝트
 
     // public GameObject AnimalSpawnCamera;
-    public GameObject InGamePanel;
-    public GameObject AnimalSpawnPanel;
-    public GameObject InventoryPanel;
+    // public GameObject InGamePanel;
+    // public GameObject AnimalSpawnPanel;
+    // public GameObject InventoryPanel;
 
-    public float RandomSpawnRange_X = 250f;        //랜덤으로 스폰될 장소 범위 x축
-    public float RandomSpawnRange_Z = 250f;        //랜덤으로 스폰될 장소 범위 z축
-    public float SpawnRange_Y = 100f;
+    // public float RandomSpawnRange_X = 250f;        //랜덤으로 스폰될 장소 범위 x축
+    // public float RandomSpawnRange_Z = 250f;        //랜덤으로 스폰될 장소 범위 z축
+    // public float SpawnRange_Y = 100f;
 
-    public GameObject Panel;
-    public GameObject hidePanel = null;
-    public GameObject touchController;
-    public GameObject ScrollAndPinch;
-
-    private int trashCount;
-
-    
-
-
-
-    public void activePanelButton()
-    {
-        GameManager.Instance.PlaySfxMusic(GameManager.sfx.BUTTON);
-        Panel.SetActive(true);
-        touchController.SetActive(false);
-        ScrollAndPinch.SetActive(false);
-    }
-
-    public void inactivePanelButton()
-    {
-        GameManager.Instance.PlaySfxMusic(GameManager.sfx.BUTTON);
-        touchController.SetActive(true);
-        ScrollAndPinch.SetActive(true);
-        hidePanel.SetActive(true);
-        Panel.SetActive(false);
-    }
 
 
     // public void ClickAnimalButton()
@@ -158,7 +133,6 @@ public class AnimalManage : MonoBehaviour
         float time = 0;
         while(time <= 2)
         {
-            Debug.Log(time);
             obj.transform.Rotate(new Vector3(0,0,time*1f));
             time += Time.deltaTime;
             yield return null;
@@ -186,10 +160,12 @@ public class AnimalManage : MonoBehaviour
             DestroyAnimal(3);
         else if(trashCount >= Spawn[4].DestroyPoint && trashCount < Spawn[5].DestroyPoint && !(Spawn[4].isDestroy))
             DestroyAnimal(4);
-        else if(trashCount >= Spawn[5].DestroyPoint && trashCount < Spawn[6].DestroyPoint && !(Spawn[5].isDestroy))
+        else if(trashCount >= Spawn[5].DestroyPoint && !(Spawn[5].isDestroy))
         {
             DestroyAnimal(5);
             Debug.Log("게임오버");
+            GameManager.Instance.GameOver();
+            
         }
   
 

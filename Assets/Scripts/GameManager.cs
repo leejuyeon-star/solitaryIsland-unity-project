@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;      //UI 클래스 사용을 위함
 using TMPro;        //TextmeshPro사용을 위함
+using UnityEngine.SceneManagement;      //scene 종료를 위함
+
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +16,8 @@ public class GameManager : MonoBehaviour
         public int trashCurrentCount;   // 현재 활성화된 쓰레기 개수
     }
     public trashCount _trashCount;
+
+    public int garbageCreatePlus;      //레벨 올라갈수록 더해질 쓰레기 개수
 
     // public int heart;
 
@@ -30,9 +34,21 @@ public class GameManager : MonoBehaviour
     // public int animalCount8;  //동물 수
     // public int animalCount9;  //동물 수
 
-    public AudioSource Mainbgm;
+    public bool iscomplete0;
+    public bool iscomplete1;
+    public bool iscomplete2;
+    public bool iscomplete3;
+    public bool iscomplete4;
+    public bool iscomplete5;
+
+    public GameObject GameOverPanel;
+    public GameObject EndingPanel;
+
+    public AudioSource[] bgmMusic;
     public AudioSource[] sfxMusic;
-    public enum sfx {SPAWNANIMAL, BUTTON, LEVELUP, PICKUP,SPAWNTRASHBAG };
+
+    public enum bgm {START, MAIN};
+    public enum sfx {LEVELUP, BUTTON, PICKUP, SPAWNTRASHBAG};
     private int sfxCursor;
 
 
@@ -41,7 +57,16 @@ public class GameManager : MonoBehaviour
     {
         Instance = this; 
 
-        // PlayerPrefs.SetInt("trashCurrentCount", 5);     //!로드될 쓰레기 양 유지하기 위한 장치 (작품 완성시 지우기)
+        iscomplete0 = PlayerPrefs.GetInt("iscomplete0")==1?true:false;
+        iscomplete1 = PlayerPrefs.GetInt("iscomplete1")==1?true:false;
+        iscomplete2 = PlayerPrefs.GetInt("iscomplete2")==1?true:false;
+        iscomplete3 = PlayerPrefs.GetInt("iscomplete3")==1?true:false;
+        iscomplete4 = PlayerPrefs.GetInt("iscomplete4")==1?true:false;
+        iscomplete5 = PlayerPrefs.GetInt("iscomplete5")==1?true:false;
+
+        garbageCreatePlus = PlayerPrefs.GetInt("garbageCreatePlus");
+
+        // PlayerPrefs.SetInt("trashCurrentCount", 0);     //!로드될 쓰레기 양 유지하기 위한 장치 (작품 완성시 지우기)
         // PlayerPrefs.SetInt("animalCount0", 1);           //!로드될 동물 수 유지하기 위한 장치 (작품 완성시 지우기)
         // PlayerPrefs.SetInt("animalCount1", 1);          //!로드될 동물 수 유지하기 위한 장치 (작품 완성시 지우기)
         // PlayerPrefs.SetInt("animalCount2", 1);          //!로드될 동물 수 유지하기 위한 장치 (작품 완성시 지우기)
@@ -70,8 +95,31 @@ public class GameManager : MonoBehaviour
         // animalCount9 = PlayerPrefs.GetInt("animalCount9");
         // animalCountSum = PlayerPrefs.GetInt("animalCountSum");
         // heart = PlayerPrefs.GetInt("heart");
+        PlayBgm(bgm.START);
+    }
 
-        Mainbgm.Play();
+
+    public void ClickGameReset()
+    {
+        Instance = this; 
+        PlayerPrefs.SetInt("iscomplete0", 0);     
+        PlayerPrefs.SetInt("iscomplete1", 0);     
+        PlayerPrefs.SetInt("iscomplete2", 0);    
+        PlayerPrefs.SetInt("iscomplete3", 0);     
+        PlayerPrefs.SetInt("iscomplete4", 0);     
+        PlayerPrefs.SetInt("iscomplete5", 0);     
+
+        // iscomplete0 = PlayerPrefs.GetInt("iscomplete0")==1?true:false;
+        // iscomplete1 = PlayerPrefs.GetInt("iscomplete1")==1?true:false;
+        // iscomplete2 = PlayerPrefs.GetInt("iscomplete2")==1?true:false;
+        // iscomplete3 = PlayerPrefs.GetInt("iscomplete3")==1?true:false;
+        // iscomplete4 = PlayerPrefs.GetInt("iscomplete4")==1?true:false;
+        // iscomplete5 = PlayerPrefs.GetInt("iscomplete5")==1?true:false;
+
+        PlayerPrefs.SetInt("garbageCreatePlus", 10);
+        // garbageCreatePlus = PlayerPrefs.GetInt("garbageCreatePlus");
+        // PlayBgm(bgm.START);
+        SceneManager.LoadScene(0);
     }
 
 
@@ -95,6 +143,25 @@ public class GameManager : MonoBehaviour
         // PlayerPrefs.SetInt("animalCountSum", animalCountSum);
         // PlayerPrefs.SetInt("heart", heart);
 
+
+    }
+
+    public void GameOver()
+    {
+        GameOverPanel.SetActive(true);
+        PlayerPrefs.SetInt("iscomplete0", iscomplete0?1:0);
+        PlayerPrefs.SetInt("iscomplete1", iscomplete1?1:0);
+        PlayerPrefs.SetInt("iscomplete2", iscomplete2?1:0);
+        PlayerPrefs.SetInt("iscomplete3", iscomplete3?1:0);
+        PlayerPrefs.SetInt("iscomplete4", iscomplete4?1:0);
+        PlayerPrefs.SetInt("iscomplete5", iscomplete5?1:0);
+        PlayerPrefs.SetInt("garbageCreatePlus", garbageCreatePlus);
+        
+    }
+
+    public void Ending()
+    {
+        EndingPanel.SetActive(true);
     }
 
 
@@ -172,23 +239,46 @@ public class GameManager : MonoBehaviour
     {
         switch(type) 
         {
-            case sfx.SPAWNANIMAL :
+            case sfx.LEVELUP :
                 sfxMusic[0].Play();
                 break;
             case sfx.BUTTON :
                 sfxMusic[1].Play();
                 break;
-            case sfx.LEVELUP :
+            case sfx.PICKUP :
                 sfxMusic[2].Play();
                 break;
-            case sfx.PICKUP :
-                sfxMusic[3].Play();
-                break;
             case sfx.SPAWNTRASHBAG :
-                sfxMusic[4].Play();
+                sfxMusic[3].Play();
                 break;
             
         }
     }
 
+    public void PlayBgm(bgm type)
+    {
+        switch(type)
+        {
+            case bgm.START :
+                bgmMusic[0].Play();
+                break;
+            case GameManager.bgm.MAIN :
+                bgmMusic[1].Play();
+                break;
+        }
+    }
+
+
+    public void StopBgm(bgm type)
+    {
+        switch(type)
+        {
+            case bgm.START :
+                bgmMusic[0].Stop();
+                break;
+            case GameManager.bgm.MAIN :
+                bgmMusic[1].Stop();
+                break;
+        }
+    }
 }

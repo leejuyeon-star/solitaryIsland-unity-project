@@ -88,7 +88,7 @@ public class trashBagSpawner : MonoBehaviour
 
     IEnumerator DelayDeactivateTrashBag(float DelayTime, GameObject TrashBagClone)
     {
-        yield return new WaitForSecondsRealtime(DelayTime);
+        yield return new WaitForSeconds(DelayTime);
         ObjectPooling.Instance.DeactivatePoolItem(TrashBagClone);
         garbageSpawnerController.GetComponent<garbageSpawner>().EffectAfterDeactivateTrashBag();
     }

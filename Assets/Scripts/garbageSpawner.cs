@@ -7,9 +7,9 @@ public class garbageSpawner : MonoBehaviour
 {
     public int garbageKind;            //오브젝트 총 개수
     public GameObject[] garbagePrefab;
-    public float RandomSpawnRange_X = 250f;        //랜덤으로 스폰될 장소 범위 x축
-    public float RandomSpawnRange_Z = 250f;        //랜덤으로 스폰될 장소 범위 z축
-    public float SpawnRange_Y = 100f;
+    // public float RandomSpawnRange_X = 250f;        //랜덤으로 스폰될 장소 범위 x축
+    // public float RandomSpawnRange_Z = 250f;        //랜덤으로 스폰될 장소 범위 z축
+    // public float SpawnRange_Y = 100f;
 
 
     private int objCreateCount = 1;         //한번에 스폰할 오브젝트 개수
@@ -18,31 +18,7 @@ public class garbageSpawner : MonoBehaviour
     private float timer;
 
     
-    public GameObject Panel;
-    public GameObject hidePanel = null;
-    public GameObject touchController;
-    public GameObject ScrollAndPinch;
-    public GameObject garbageUICheck;
 
-
-
-    public void activePanelButton()
-    {
-        garbageUICheck.SetActive(false);
-        GameManager.Instance.PlaySfxMusic(GameManager.sfx.BUTTON);
-        Panel.SetActive(true);
-        touchController.SetActive(false);
-        ScrollAndPinch.SetActive(false);
-    }
-
-    public void inactivePanelButton()
-    {
-        GameManager.Instance.PlaySfxMusic(GameManager.sfx.BUTTON);
-        touchController.SetActive(true);
-        ScrollAndPinch.SetActive(true);
-        hidePanel.SetActive(true);
-        Panel.SetActive(false);
-    }
 
     // private void Start()
     // {
@@ -73,7 +49,7 @@ public class garbageSpawner : MonoBehaviour
         {
             int CreateObject = Random.Range(0, garbageKind);
             GameObject clone = ObjectPooling.Instance.ActivatePoolItem(garbagePrefab[CreateObject], spawnPosition);
-            clone.transform.localScale = new Vector3(50,50,50);
+            clone.transform.localScale = new Vector3(40,40,40);
         }
         //exploder도 생성
         GameObject exploderClone = ObjectPooling.Instance.ActivatePoolItem(exploder, spawnPosition);

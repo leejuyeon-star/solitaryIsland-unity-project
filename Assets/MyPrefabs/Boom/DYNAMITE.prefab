@@ -112,11 +112,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d039134acf55a14fbb781a9c088c4ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  a: 2
   explosionTime: 0.01
   randomizeExplosionTime: 0
   radius: 5
-  power: 2
+  power: 10
   probeCount: 100
   explodeDuration: 3
 --- !u!54 &2840991594784782997

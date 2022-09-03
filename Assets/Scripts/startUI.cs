@@ -10,12 +10,14 @@ public class startUI : MonoBehaviour
     public GameObject touchController;
     public GameObject ScrollAndPinch;
     public GameObject trashBagSpawnCube;
+    public GameObject zoomInCamera;
 
     public void ClickStart()
     {
         GameManager.Instance.PlaySfxMusic(GameManager.sfx.BUTTON);
         GameManager.Instance.StopBgm(GameManager.bgm.START);
         GameManager.Instance.PlayBgm(GameManager.bgm.MAIN);
+        zoomInCamera.SetActive(false);
         mainPanel.SetActive(true);
         touchController.SetActive(true);
         ScrollAndPinch.SetActive(true);

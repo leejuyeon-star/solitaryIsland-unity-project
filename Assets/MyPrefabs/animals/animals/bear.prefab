@@ -428,7 +428,6 @@ GameObject:
   - component: {fileID: 23418680309065412}
   - component: {fileID: -382964576855963083}
   - component: {fileID: 3451077797691907220}
-  - component: {fileID: 4905631325832126940}
   - component: {fileID: -2649433412111785721}
   m_Layer: 0
   m_Name: bear
@@ -537,18 +536,6 @@ CapsuleCollider:
   m_Height: 3.5633638
   m_Direction: 1
   m_Center: {x: 0, y: 4.391661, z: 0}
---- !u!114 &4905631325832126940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1583049149487350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34039bd8a2dbafa4abd6cae042e8418a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-2649433412111785721
 MonoBehaviour:
   m_ObjectHideFlags: 0

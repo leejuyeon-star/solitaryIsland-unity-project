@@ -9,11 +9,13 @@ public class ObjectPooling : MonoBehaviour
     public GameObject trashBagPrefab;         //쓰레기봉투
     public GameObject exploder;               //exploder
     public GameObject[] garbagePrefab;        //쓰레기들
+    public GameObject animalDeadEffectPrefab;         //동물 죽는 이펙트 오브젝트
     
 
     public GameObject trashBagParent;       //쓰레기봉투가 상속될 그룹
     public GameObject exploderParent;       // exploder가 상속될 그룹
     public GameObject garbageParent;        //쓰레기가 상속될 그룹
+    public GameObject animalDeadParent;     //동물 죽음 이펙트 오브젝트가 상속될 그룹
 
     public int increaseCount = 5;      //오브젝트가 부족할때 Instantiate()로 추가 생성되는 오브젝트 개수
 
@@ -28,6 +30,7 @@ public class ObjectPooling : MonoBehaviour
     private Queue<GameObject> garbageQueue4 = new Queue<GameObject>();  //쓰레기 큐
     private Queue<GameObject> garbageQueue5 = new Queue<GameObject>();  //쓰레기 큐
 
+    private Queue<GameObject> animalDeadEffectQueue = new Queue<GameObject>();  //쓰레기 큐
 
     
     private void Awake()
@@ -47,6 +50,7 @@ public class ObjectPooling : MonoBehaviour
         InstantiateObjects(garbagePrefab[3]);
         InstantiateObjects(garbagePrefab[4]);
         InstantiateObjects(garbagePrefab[5]);
+        InstantiateObjects(animalDeadEffectPrefab);
 
         return;
     }   
@@ -77,6 +81,7 @@ public class ObjectPooling : MonoBehaviour
     {
         if(Instance.MappingQueue(prefab).Count <= 0)      
         {
+            Debug.Log(prefab);
             Instance.InstantiateObjects(prefab);              
         }
         GameObject gameobject = Instance.MappingQueue(prefab).Dequeue();
@@ -115,6 +120,10 @@ public class ObjectPooling : MonoBehaviour
         else if (prefab.name == exploder.name)
         {
             ObjectQueue = exploderQueue;
+        }
+        else if (prefab.name == animalDeadEffectPrefab.name)
+        {
+            ObjectQueue = animalDeadEffectQueue;
         }
         else if (prefab.name == garbagePrefab[0].name)
         {
@@ -159,6 +168,10 @@ public class ObjectPooling : MonoBehaviour
         else if (prefab == exploder)
         {
             objectParent = exploderParent;
+        }
+        else if (prefab == animalDeadEffectPrefab)
+        {
+            objectParent = animalDeadParent;
         }
         else
         {

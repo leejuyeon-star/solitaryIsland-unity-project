@@ -14,20 +14,6 @@ public class gameOverUI : MonoBehaviour
     public GameObject ScrollAndPinch;
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
     private void OnEnable()
     {
         GameManager.Instance.StopBgm(GameManager.bgm.MAIN);

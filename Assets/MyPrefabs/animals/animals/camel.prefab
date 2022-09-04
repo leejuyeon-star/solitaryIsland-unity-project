@@ -96,7 +96,6 @@ GameObject:
   - component: {fileID: 23880889392363248}
   - component: {fileID: 5432042390712798445}
   - component: {fileID: -38882901859840661}
-  - component: {fileID: -4580845236825315571}
   - component: {fileID: -6597696654923140188}
   m_Layer: 0
   m_Name: camel
@@ -206,18 +205,6 @@ CapsuleCollider:
   m_Height: 6.7975025
   m_Direction: 1
   m_Center: {x: 0, y: 7.7318077, z: 0}
---- !u!114 &-4580845236825315571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1614689655745524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34039bd8a2dbafa4abd6cae042e8418a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-6597696654923140188
 MonoBehaviour:
   m_ObjectHideFlags: 0

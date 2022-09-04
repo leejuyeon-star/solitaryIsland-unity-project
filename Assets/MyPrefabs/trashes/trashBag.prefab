@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2417420211322870642}
   - component: {fileID: 2417420211912151310}
   - component: {fileID: 2417420211912151311}
-  - component: {fileID: 2417420211912151307}
   - component: {fileID: -5454825409801913291}
   m_Layer: 7
   m_Name: trashBag
@@ -117,20 +116,6 @@ CapsuleCollider:
   m_Height: 10.994473
   m_Direction: 1
   m_Center: {x: 0.11660623, y: 5.4972367, z: 0.22648107}
---- !u!114 &2417420211912151307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2417420211320679142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad0c61e23384e344a8778f596b9114de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 50
-  moveDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &-5454825409801913291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,17 +132,8 @@ MonoBehaviour:
   garbagePrefab:
   - {fileID: 140520, guid: dd9608af606942d40866ed841b2910bd, type: 3}
   - {fileID: 5329458996146142990, guid: a730ded43acb92740a48eb9e30794dc0, type: 3}
-  - {fileID: 433358354945054939, guid: fade50cf12ac08647b0f860fb508ea73, type: 3}
-  - {fileID: 103030, guid: 8b342121ff2be5a45b964062c2ec412f, type: 3}
-  - {fileID: 102526, guid: 3667125f3eed893459ad620dfedcca53, type: 3}
-  - {fileID: 159330, guid: 18c7f6b8eb5793f49a8f6d81d2e01b43, type: 3}
   - {fileID: 3854580023973963060, guid: fe6e1d39352d70647892c440f660ba75, type: 3}
   - {fileID: 129966, guid: 44d893618ee70db4fbea9c13f14a89fb, type: 3}
   - {fileID: 3889447483316223439, guid: 94dd57177f9e44140afa469b7d8b8070, type: 3}
   - {fileID: 3878419794251599393, guid: b60098ff6b33b954ab7d5c447e7e9f21, type: 3}
-  RandomSpawnRange_X: 250
-  RandomSpawnRange_Z: 250
-  SpawnRange_Y: 100
-  objCreateCount: 3
   exploder: {fileID: 2840991594784782998, guid: fbefc46f268a7a342aa5ec0521ce49d8, type: 3}
-  waitingTime: 5

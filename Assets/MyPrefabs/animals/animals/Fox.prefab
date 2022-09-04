@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 23817082537556520}
   - component: {fileID: -5238692113101486258}
   - component: {fileID: -6045068467441443439}
-  - component: {fileID: 488540460553318356}
+  - component: {fileID: 6656457855996941708}
   m_Layer: 0
   m_Name: Fox
   m_TagString: Untagged
@@ -205,26 +205,24 @@ CapsuleCollider:
   m_Height: 3.264988
   m_Direction: 1
   m_Center: {x: 0, y: 3.386487, z: 0}
---- !u!95 &488540460553318356
-Animator:
-  serializedVersion: 4
+--- !u!114 &6656457855996941708
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1465281363921274}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da8874d561ae2a4a93f3532fc11a50e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSpeed: 5
+  runSpeed: 10
+  MinState: 1
+  MaxState: 5
+  walkState: 4
+  runState: 5
 --- !u!1 &1554409811523474
 GameObject:
   m_ObjectHideFlags: 0

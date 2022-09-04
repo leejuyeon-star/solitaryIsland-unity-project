@@ -51,6 +51,9 @@ public class GameManager : MonoBehaviour
     public enum sfx {LEVELUP, BUTTON, PICKUP, SPAWNTRASHBAG};
     private int sfxCursor;
 
+    public GameObject mainCamera;
+
+    public GameObject trashBagSpawner;
 
 
     private void Awake() 
@@ -64,7 +67,14 @@ public class GameManager : MonoBehaviour
         iscomplete4 = PlayerPrefs.GetInt("iscomplete4")==1?true:false;
         iscomplete5 = PlayerPrefs.GetInt("iscomplete5")==1?true:false;
 
+        if(!iscomplete0)
+        {
+            PlayerPrefs.SetInt("garbageCreatePlus", 10);
+        }
+
         garbageCreatePlus = PlayerPrefs.GetInt("garbageCreatePlus");
+        Debug.Log(garbageCreatePlus);
+
 
         // PlayerPrefs.SetInt("trashCurrentCount", 0);     //!로드될 쓰레기 양 유지하기 위한 장치 (작품 완성시 지우기)
         // PlayerPrefs.SetInt("animalCount0", 1);           //!로드될 동물 수 유지하기 위한 장치 (작품 완성시 지우기)
@@ -156,7 +166,7 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("iscomplete4", iscomplete4?1:0);
         PlayerPrefs.SetInt("iscomplete5", iscomplete5?1:0);
         PlayerPrefs.SetInt("garbageCreatePlus", garbageCreatePlus);
-        
+        trashBagSpawner.SetActive(false);
     }
 
     public void Ending()
@@ -280,5 +290,12 @@ public class GameManager : MonoBehaviour
                 bgmMusic[1].Stop();
                 break;
         }
+    }
+
+
+    public void StartSetCamera()
+    {
+        mainCamera.transform.position = new Vector3(61,182,-272);
+        mainCamera.transform.rotation = Quaternion.Euler(30, -14, 0);
     }
 }

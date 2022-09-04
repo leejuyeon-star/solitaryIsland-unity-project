@@ -262,7 +262,6 @@ GameObject:
   - component: {fileID: 23845076345946982}
   - component: {fileID: -2934972730721536797}
   - component: {fileID: -3529074164153217286}
-  - component: {fileID: 3211643950660265193}
   - component: {fileID: -6673306879186208323}
   m_Layer: 0
   m_Name: cock
@@ -370,18 +369,6 @@ CapsuleCollider:
   m_Height: 2.9621391
   m_Direction: 1
   m_Center: {x: 0, y: 2.3970394, z: -0.49081028}
---- !u!114 &3211643950660265193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1541574519402986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34039bd8a2dbafa4abd6cae042e8418a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-6673306879186208323
 MonoBehaviour:
   m_ObjectHideFlags: 0

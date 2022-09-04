@@ -38,12 +38,11 @@ public class garbageSpawner : MonoBehaviour
             SpawnGarbagefromTrashbag();       //쓰레기, exploder 생성하기
     }
     
-    
-    
     //쓰레기, exploder 생성하기
     private void SpawnGarbagefromTrashbag()
     {
         Vector3 spawnPosition = transform.position;
+        
         //objCreateCount만큼의 양으로 랜덤한 물건의 오브젝트를 쓰레기봉투에서 생성
         for(int i=0; i<objCreateCount; i++)
         {
@@ -53,7 +52,7 @@ public class garbageSpawner : MonoBehaviour
         }
         //exploder도 생성
         GameObject exploderClone = ObjectPooling.Instance.ActivatePoolItem(exploder, spawnPosition);
-        objCreateCount += Random.Range(0,GameManager.Instance.garbageCreatePlus);
+        objCreateCount += Random.Range(3,GameManager.Instance.garbageCreatePlus);
     }
 
 

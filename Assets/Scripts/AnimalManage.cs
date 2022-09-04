@@ -24,6 +24,10 @@ public class AnimalManage : MonoBehaviour
     
     [SerializeField] SpawnGroup[] Spawn;
     public Vector3 spawnPosition;       //동물 생성할 위치
+    public GameObject animalDeadEffectPrefab;         //동물 죽는 이펙트 오브젝트
+
+    private Vector3[] animalDeadPosition = new [] {new Vector3(0,0,0), new Vector3(0,0,0), new Vector3(0,0,0), new Vector3(0,0,0), new Vector3(0,0,0)};
+
     // public GameObject _NoPointAlarm;    //"포인트가 부족합니다" 생성하는 txt오브젝트
     // public GameObject _NoHeartAlarm;    //"heart가 부족합니다" 생성하는 txt오브젝트
 
@@ -116,19 +120,28 @@ public class AnimalManage : MonoBehaviour
 
     private void DestroyAnimal(int Number)
     {
+        int i=0;
         foreach(GameObject obj in Spawn[Number].animalObject)
         {
             obj.GetComponent<animalWalk>().Stop();
-            IEnumerator coroutin = rotateAnimal(obj);
+            animalDeadPosition[i] = obj.transform.position;
+            i++;
+            IEnumerator coroutin = deadAnimalAnimation(obj);
             StartCoroutine(coroutin);
             // obj.GetComponent<animalAnimationControll>().animateAnimalDeath();
         }
-        IEnumerator coroutine = DelayDestroy(Number);
+        // IEnumerator coroutine2 = EffectAnimalDead(i);
+        IEnumerator coroutine = DelayDestroy(Number, i);
         StartCoroutine(coroutine);
+        // StartCoroutine(coroutine2);
+        // IEnumerator coroutine2 = EffectAnimalDead(i);
+        // IEnumerator coroutine = DelayDestroy(Number);
+        // StartCoroutine(coroutine);
+        // StartCoroutine(coroutine2);
         Spawn[Number].isDestroy = true;
     }
 
-    IEnumerator rotateAnimal(GameObject obj)
+    IEnumerator deadAnimalAnimation(GameObject obj)
     {
         float time = 0;
         while(time <= 2)
@@ -139,28 +152,53 @@ public class AnimalManage : MonoBehaviour
         }
     }
 
-    IEnumerator DelayDestroy(int Number)
+    IEnumerator DelayDestroy(int Number, int count)
     {
         yield return new WaitForSeconds(6f);
-        Destroy(Spawn[Number].animalParent);
+        for(int i=0; i<count; i++)
+        {
+            ObjectPooling.Instance.ActivatePoolItem(animalDeadEffectPrefab, animalDeadPosition[i]);
+        }
+        yield return new WaitForSeconds(2f);
+        for(int i=0; i<count; i++)
+        {
+            Debug.Log("되니?");
+            ObjectPooling.Instance.DeactivatePoolItem(animalDeadEffectPrefab);
+        }
+        Spawn[Number].animalParent.SetActive(false);
     }
+    // IEnumerator DelayDestroy(int Number)
+    // {
+    //     yield return new WaitForSeconds(6f);
+    //     Spawn[Number].animalParent.SetActive(false);
+    // }
+
+    // IEnumerator EffectAnimalDead(int count)
+    // {
+    //     for(int i=0; i<count; i++)
+    //     {
+    //         Debug.Log("..");
+    //         ObjectPooling.Instance.ActivatePoolItem(animalDeadEffectPrefab, animalDeadPosition[i]);
+    //         yield return null;
+    //     }
+    // }
     
 
     private void Update()
     {
 
         trashCount = GameManager.Instance._trashCount.trashCurrentCount;
-        if(trashCount >= Spawn[0].DestroyPoint && trashCount < Spawn[1].DestroyPoint && !(Spawn[0].isDestroy))
+        if(trashCount >= Spawn[0].DestroyPoint && !(Spawn[0].isDestroy))
             DestroyAnimal(0);
-        else if(trashCount >= Spawn[1].DestroyPoint && trashCount < Spawn[2].DestroyPoint && !(Spawn[1].isDestroy))
+        if(trashCount >= Spawn[1].DestroyPoint && !(Spawn[1].isDestroy))
             DestroyAnimal(1);
-        else if(trashCount >= Spawn[2].DestroyPoint && trashCount < Spawn[3].DestroyPoint && !(Spawn[2].isDestroy))
+        if(trashCount >= Spawn[2].DestroyPoint && !(Spawn[2].isDestroy))
             DestroyAnimal(2);
-        else if(trashCount >= Spawn[3].DestroyPoint && trashCount < Spawn[4].DestroyPoint && !(Spawn[3].isDestroy))
+        if(trashCount >= Spawn[3].DestroyPoint && !(Spawn[3].isDestroy))
             DestroyAnimal(3);
-        else if(trashCount >= Spawn[4].DestroyPoint && trashCount < Spawn[5].DestroyPoint && !(Spawn[4].isDestroy))
+        if(trashCount >= Spawn[4].DestroyPoint && !(Spawn[4].isDestroy))
             DestroyAnimal(4);
-        else if(trashCount >= Spawn[5].DestroyPoint && !(Spawn[5].isDestroy))
+        if(trashCount >= Spawn[5].DestroyPoint && !(Spawn[5].isDestroy))
         {
             DestroyAnimal(5);
             Debug.Log("게임오버");

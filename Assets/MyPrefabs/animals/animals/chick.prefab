@@ -345,9 +345,7 @@ GameObject:
   - component: {fileID: 23730233767849224}
   - component: {fileID: 2053314725881213468}
   - component: {fileID: -3545042151525301858}
-  - component: {fileID: -7852282419159765235}
   - component: {fileID: 905096301709644334}
-  - component: {fileID: 796391297764218178}
   m_Layer: 0
   m_Name: chick
   m_TagString: Untagged
@@ -454,37 +452,7 @@ CapsuleCollider:
   m_Height: 1.5289998
   m_Direction: 1
   m_Center: {x: 0, y: 1.2774928, z: 0}
---- !u!114 &-7852282419159765235
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1939047327135358}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34039bd8a2dbafa4abd6cae042e8418a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &905096301709644334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1939047327135358}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2da8874d561ae2a4a93f3532fc11a50e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  walkSpeed: 5
-  runSpeed: 10
-  MinState: 1
-  MaxState: 5
-  walkState: 4
-  runState: 5
---- !u!114 &796391297764218178
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -18,6 +18,7 @@ public class startUI : MonoBehaviour
         GameManager.Instance.StopBgm(GameManager.bgm.START);
         GameManager.Instance.PlayBgm(GameManager.bgm.MAIN);
         zoomInCamera.SetActive(false);
+        GameManager.Instance.StartSetCamera();
         mainPanel.SetActive(true);
         touchController.SetActive(true);
         ScrollAndPinch.SetActive(true);

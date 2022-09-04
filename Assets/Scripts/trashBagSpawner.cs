@@ -27,6 +27,9 @@ public class trashBagSpawner : MonoBehaviour
     public GameObject AnimatorObj;      //애니메이터가 포함된 오브젝트
     private Animator animator;
 
+    // public GameObject trashParticle;
+    // private GameObject trashParticleClone;
+
 
     private List<string> alarmContent = new List<string>() {
         "오늘은 맥주 축제가 열리는 날입니다! 모두 즐겨요!", 
@@ -41,6 +44,9 @@ public class trashBagSpawner : MonoBehaviour
         alarmUITxt = alarmTxt.GetComponent<TextMeshProUGUI>();
         animator = AnimatorObj.GetComponent<Animator>();
         animator.SetBool("alarmOn", false);
+        // trashParticleClone = Instantiate(trashParticle, gameObject.transform);
+        // trashParticleClone.SetActive(false);
+
     }
     
     private void Update()
@@ -49,8 +55,8 @@ public class trashBagSpawner : MonoBehaviour
         if(timer > waitingSpawnTime)
         {
             //Action
-            printUI();   
-            InstantiateTrashbag();     
+            printUI();
+            InstantiateTrashbag();
             timer = 0;
         }
     }
@@ -76,7 +82,7 @@ public class trashBagSpawner : MonoBehaviour
 
     private void InstantiateTrashbag()
     {
-        // spawnPosition = transform.position;
+        // trashParticleClone.SetActive(true);
         objCreateCount = Random.Range(1, objCreateMax);
         for(int i=0; i<objCreateCount; i++){
             GameObject TrashBagClone = ObjectPooling.Instance.ActivatePoolItem(TrashBagPrefab, new Vector3(0,0,0));
@@ -89,6 +95,7 @@ public class trashBagSpawner : MonoBehaviour
     IEnumerator DelayDeactivateTrashBag(float DelayTime, GameObject TrashBagClone)
     {
         yield return new WaitForSeconds(DelayTime);
+        // trashParticleClone.SetActive(false);
         ObjectPooling.Instance.DeactivatePoolItem(TrashBagClone);
         garbageSpawnerController.GetComponent<garbageSpawner>().EffectAfterDeactivateTrashBag();
     }

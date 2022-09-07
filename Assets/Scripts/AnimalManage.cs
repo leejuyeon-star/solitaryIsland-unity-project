@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;   //구조체 배열을 위함
+using UnityEngine.UI;      //UI 클래스 사용을 위함
 // using UnityEngine.EventSystems;
 
  
@@ -27,6 +28,11 @@ public class AnimalManage : MonoBehaviour
     public GameObject animalDeadEffectPrefab;         //동물 죽는 이펙트 오브젝트
 
     private Vector3[] animalDeadPosition = new [] {new Vector3(0,0,0), new Vector3(0,0,0), new Vector3(0,0,0), new Vector3(0,0,0), new Vector3(0,0,0)};
+
+    public Sprite[] gaugeImgSample;
+    public GameObject guageObj;
+    private Image guageImg;
+
 
     // public GameObject _NoPointAlarm;    //"포인트가 부족합니다" 생성하는 txt오브젝트
     // public GameObject _NoHeartAlarm;    //"heart가 부족합니다" 생성하는 txt오브젝트
@@ -162,7 +168,6 @@ public class AnimalManage : MonoBehaviour
         yield return new WaitForSeconds(2f);
         for(int i=0; i<count; i++)
         {
-            Debug.Log("되니?");
             ObjectPooling.Instance.DeactivatePoolItem(animalDeadEffectPrefab);
         }
         Spawn[Number].animalParent.SetActive(false);
@@ -182,28 +187,49 @@ public class AnimalManage : MonoBehaviour
     //         yield return null;
     //     }
     // }
+
+    private void ChangeUI(int Number)
+    {
+        guageImg.sprite = gaugeImgSample[Number];
+    }
     
 
     private void Update()
     {
 
         trashCount = GameManager.Instance._trashCount.trashCurrentCount;
+        Debug.Log(Spawn[0].DestroyPoint+"입");
         if(trashCount >= Spawn[0].DestroyPoint && !(Spawn[0].isDestroy))
+        {
             DestroyAnimal(0);
+            ChangeUI(0);
+        }
         if(trashCount >= Spawn[1].DestroyPoint && !(Spawn[1].isDestroy))
+        {
             DestroyAnimal(1);
+            ChangeUI(1);
+        }
         if(trashCount >= Spawn[2].DestroyPoint && !(Spawn[2].isDestroy))
+        {
             DestroyAnimal(2);
+            ChangeUI(2);
+        }
         if(trashCount >= Spawn[3].DestroyPoint && !(Spawn[3].isDestroy))
+        {
             DestroyAnimal(3);
+            ChangeUI(3);
+        }
         if(trashCount >= Spawn[4].DestroyPoint && !(Spawn[4].isDestroy))
+        {
             DestroyAnimal(4);
+            ChangeUI(4);
+        }
         if(trashCount >= Spawn[5].DestroyPoint && !(Spawn[5].isDestroy))
         {
+            ChangeUI(5);
             DestroyAnimal(5);
             Debug.Log("게임오버");
             GameManager.Instance.GameOver();
-            
         }
   
 
@@ -216,12 +242,15 @@ public class AnimalManage : MonoBehaviour
     //         if(EventSystem.current.currentSelectedGameObject.name == string.Format("{0}", Spawn[i].SpawnButton.name))
     //             return i;
     //     }
-    //     Debug.Log("AnimalSpawner의 findeSpawnGroup() 오류");
+    //     Debug.Log("AimalSpawner의 findeSpawnGroup() 오류");
     //     return -1;
     // }
 
 
-
+    private void Start()
+    {
+        guageImg = guageObj.GetComponent<Image>();
+    }
 
 
 

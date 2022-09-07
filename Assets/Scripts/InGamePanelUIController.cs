@@ -31,13 +31,13 @@ public class InGamePanelUIController : MonoBehaviour
     public void printGarbageCountUI()
     {
         TextMeshProUGUI garbageUITxt = garbageScoreTxt.GetComponent<TextMeshProUGUI>();
-        garbageUITxt.text = string.Format("{0}/{1}", GameManager.Instance._trashCount.trashTouchCount, GameManager.Instance._trashCount.trashCurrentCount);
+        garbageUITxt.text = string.Format("{0}t", GameManager.Instance._trashCount.trashTouchCount);
         return;
     }
 
     public void printAniamlCountUI()
     {
-        TextMeshProUGUI animalUITxt = animalScoreTxt.GetComponent<TextMeshProUGUI>();
+        // TextMeshProUGUI animalUITxt = animalScoreTxt.GetComponent<TextMeshProUGUI>();
         // animalUITxt.text = string.Format("{0}", GameManager.Instance.GetAnimalCountSum()); 
     }
 

@@ -14,6 +14,7 @@ public class gameOverUI : MonoBehaviour
     public GameObject ScrollAndPinch;
 
 
+
     private void OnEnable()
     {
         GameManager.Instance.StopBgm(GameManager.bgm.MAIN);
@@ -23,6 +24,7 @@ public class gameOverUI : MonoBehaviour
         PrintAnotherTime();
         touchController.SetActive(false);
         ScrollAndPinch.SetActive(false);
+
     }
 
 

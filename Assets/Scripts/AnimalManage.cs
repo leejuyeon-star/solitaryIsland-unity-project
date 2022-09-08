@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;   //구조체 배열을 위함
 using UnityEngine.UI;      //UI 클래스 사용을 위함
-// using UnityEngine.EventSystems;
+using UnityEngine.EventSystems;     //애니메이션 사용시 꼭 작성
 
  
 public class AnimalManage : MonoBehaviour
@@ -32,6 +32,9 @@ public class AnimalManage : MonoBehaviour
     public Sprite[] gaugeImgSample;
     public GameObject guageObj;
     private Image guageImg;
+    private GameObject AnimatorObj;      //애니메이터가 포함된 오브젝트
+    private Animator animator;
+
 
 
     // public GameObject _NoPointAlarm;    //"포인트가 부족합니다" 생성하는 txt오브젝트
@@ -129,7 +132,7 @@ public class AnimalManage : MonoBehaviour
         int i=0;
         foreach(GameObject obj in Spawn[Number].animalObject)
         {
-            obj.GetComponent<animalWalk>().Stop();
+            // obj.GetComponent<animalWalk>().Stop();
             animalDeadPosition[i] = obj.transform.position;
             i++;
             IEnumerator coroutin = deadAnimalAnimation(obj);
@@ -198,37 +201,46 @@ public class AnimalManage : MonoBehaviour
     {
 
         trashCount = GameManager.Instance._trashCount.trashCurrentCount;
-        Debug.Log(Spawn[0].DestroyPoint+"입");
         if(trashCount >= Spawn[0].DestroyPoint && !(Spawn[0].isDestroy))
         {
             DestroyAnimal(0);
             ChangeUI(0);
+            animator.SetBool("isDead", true);
+            GameManager.Instance.PlaySfxMusic(GameManager.sfx.DEAD);
         }
         if(trashCount >= Spawn[1].DestroyPoint && !(Spawn[1].isDestroy))
         {
             DestroyAnimal(1);
             ChangeUI(1);
+            animator.SetBool("isDead", true);
+            GameManager.Instance.PlaySfxMusic(GameManager.sfx.DEAD);
         }
         if(trashCount >= Spawn[2].DestroyPoint && !(Spawn[2].isDestroy))
         {
             DestroyAnimal(2);
             ChangeUI(2);
+            animator.SetBool("isDead", true);
+            GameManager.Instance.PlaySfxMusic(GameManager.sfx.DEAD);
         }
         if(trashCount >= Spawn[3].DestroyPoint && !(Spawn[3].isDestroy))
         {
             DestroyAnimal(3);
             ChangeUI(3);
+            animator.SetBool("isDead", true);
+            GameManager.Instance.PlaySfxMusic(GameManager.sfx.DEAD);
         }
         if(trashCount >= Spawn[4].DestroyPoint && !(Spawn[4].isDestroy))
         {
             DestroyAnimal(4);
             ChangeUI(4);
+            animator.SetBool("isDead", true);
+            GameManager.Instance.PlaySfxMusic(GameManager.sfx.DEAD);
         }
         if(trashCount >= Spawn[5].DestroyPoint && !(Spawn[5].isDestroy))
         {
-            ChangeUI(5);
             DestroyAnimal(5);
-            Debug.Log("게임오버");
+            animator.SetBool("isDead", true);
+            GameManager.Instance.PlaySfxMusic(GameManager.sfx.DEAD);
             GameManager.Instance.GameOver();
         }
   
@@ -250,6 +262,9 @@ public class AnimalManage : MonoBehaviour
     private void Start()
     {
         guageImg = guageObj.GetComponent<Image>();
+        AnimatorObj = guageObj;
+        animator = AnimatorObj.GetComponent<Animator>();
+        animator.SetBool("isDead", false);
     }
 
 

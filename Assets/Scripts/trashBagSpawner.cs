@@ -34,7 +34,7 @@ public class trashBagSpawner : MonoBehaviour
     private List<string> alarmContent = new List<string>() {
         "오늘은 맥주 축제가 열리는 날입니다! 모두 즐겨요!", 
         "와라신문 - 스마트폰 E33 10G 국내 출시", 
-        "주방신문 - 주방가구 신제품 '잘라잘라' 출시"
+        "주방신문 - 주방가구 신제품 '잘라잘라' 출시",
     };
 
  

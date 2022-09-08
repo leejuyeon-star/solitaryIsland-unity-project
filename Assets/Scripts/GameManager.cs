@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
     public AudioSource[] sfxMusic;
 
     public enum bgm {START, MAIN};
-    public enum sfx {LEVELUP, BUTTON, PICKUP, SPAWNTRASHBAG};
+    public enum sfx {LEVELUP, BUTTON, PICKUP, SPAWNTRASHBAG, DEAD};
     private int sfxCursor;
 
     public GameObject mainCamera;
@@ -261,6 +261,9 @@ public class GameManager : MonoBehaviour
             case sfx.SPAWNTRASHBAG :
                 sfxMusic[3].Play();
                 break;
+            case sfx.DEAD :
+                sfxMusic[4].Play();
+                break;
             
         }
     }
@@ -295,7 +298,8 @@ public class GameManager : MonoBehaviour
 
     public void StartSetCamera()
     {
-        mainCamera.transform.position = new Vector3(61,182,-272);
+        mainCamera.transform.position = new Vector3(116,280,-434);
+        // mainCamera.transform.position = new Vector3(61,182,-272);
         mainCamera.transform.rotation = Quaternion.Euler(30, -14, 0);
     }
 }

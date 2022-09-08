@@ -11,6 +11,7 @@ using UnityEngine.UI;      //UI 클래스 사용을 위함
 
 public class ImageFadeIn : MonoBehaviour
 {
+    public int waitTime;
     public int speed = 1;                   //fade out 속도
     private float currentTime = 0.0f;
     public Image Panel;       
@@ -37,7 +38,7 @@ public class ImageFadeIn : MonoBehaviour
         currentTime = 0.0f;
         transparent = 0.0f;
         Panel.color = new Color(colorR, colorG, colorB, 0);
-        IEnumerator enumerator = setTransparent(speed);
+        IEnumerator enumerator = setTransparent(waitTime, speed);
         StartCoroutine(enumerator);
     }
 
@@ -59,8 +60,10 @@ public class ImageFadeIn : MonoBehaviour
     // }
 
 
-    private IEnumerator setTransparent(int speed)
+    private IEnumerator setTransparent(int waitTime, int speed)
     {
+        yield return new WaitForSeconds(waitTime);
+
         while(transparent <= 1)
         {
             yield return new WaitForSeconds(0.1f);

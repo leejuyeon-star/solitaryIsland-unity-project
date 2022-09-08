@@ -7,6 +7,7 @@ public class startUI : MonoBehaviour
     public GameObject startPanel;
     public GameObject mainPanel;
     public GameObject howToPanel;
+    public GameObject stateUI;
     public GameObject touchController;
     public GameObject ScrollAndPinch;
     public GameObject trashBagSpawnCube;
@@ -17,6 +18,7 @@ public class startUI : MonoBehaviour
         GameManager.Instance.PlaySfxMusic(GameManager.sfx.BUTTON);
         GameManager.Instance.StopBgm(GameManager.bgm.START);
         GameManager.Instance.PlayBgm(GameManager.bgm.MAIN);
+        stateUI.SetActive(true);
         zoomInCamera.SetActive(false);
         GameManager.Instance.StartSetCamera();
         mainPanel.SetActive(true);

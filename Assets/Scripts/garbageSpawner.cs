@@ -17,14 +17,6 @@ public class garbageSpawner : MonoBehaviour
 
     private float timer;
 
-    
-
-
-    // private void Start()
-    // {
-    //     SpawnGarbage();
-    // }
-
     void OnEnable()
     {
         timer = 0.0f;
@@ -52,7 +44,9 @@ public class garbageSpawner : MonoBehaviour
         }
         //exploder도 생성
         GameObject exploderClone = ObjectPooling.Instance.ActivatePoolItem(exploder, spawnPosition);
+        GameManager.Instance._trashCount.trashCurrentCount = objCreateCount;
         objCreateCount += Random.Range(3,GameManager.Instance.garbageCreatePlus);
+        Debug.Log("현 쓰레기 수"+GameManager.Instance._trashCount.trashCurrentCount);
     }
 
 

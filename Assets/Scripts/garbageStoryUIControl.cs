@@ -96,6 +96,8 @@ public class garbageStoryUIControl : MonoBehaviour
     }
     
 
+
+    
     // Update is called once per frame
     private void Update()
     {
